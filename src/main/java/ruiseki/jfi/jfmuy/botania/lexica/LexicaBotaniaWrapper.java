@@ -42,15 +42,19 @@ public class LexicaBotaniaWrapper implements IRecipeWrapper {
         minecraft.fontRenderer.drawString(title, titleX, 26, 0x006600, false);
 
         KnowledgeType type = entry.getKnowledgeType();
-        String typeName = type.color + StatCollector.translateToLocal(type.getUnlocalizedName()).replaceAll("&[0-9a-fklmnor]", "");
+        String typeName = type.color + StatCollector.translateToLocal(type.getUnlocalizedName())
+            .replaceAll("&[0-9a-fklmnor]", "");
         int typeX = centerX - (minecraft.fontRenderer.getStringWidth(typeName) / 2);
         minecraft.fontRenderer.drawString(typeName, typeX, 38, 0x444444, false);
 
         PageText.renderText(
-            5, 52, 160, 200, 10,
+            5,
+            52,
+            160,
+            200,
+            10,
             0x666666,
-            "\"" + StatCollector.translateToLocal(entry.getTagline()) + "\""
-        );
+            "\"" + StatCollector.translateToLocal(entry.getTagline()) + "\"");
 
         String key = LexiconRecipeMappings.stackToString(outputStack);
         String quickInfo = "botania.nei.quickInfo:" + key;
