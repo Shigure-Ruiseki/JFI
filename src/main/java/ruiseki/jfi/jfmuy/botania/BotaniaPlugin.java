@@ -37,6 +37,8 @@ import ruiseki.jfi.jfmuy.botania.puredaisy.PureDaisyRecipeWrapper;
 import ruiseki.jfi.jfmuy.botania.runicaltar.RunicAltarRecipeCategory;
 import ruiseki.jfi.jfmuy.botania.runicaltar.RunicAltarRecipeWrapper;
 import ruiseki.jfmuy.api.ICollapsibleGroupRegistry;
+import ruiseki.jfmuy.api.IGuiHelper;
+import ruiseki.jfmuy.api.IJFMUYHelpers;
 import ruiseki.jfmuy.api.IJFMUYRuntime;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -84,34 +86,18 @@ public class BotaniaPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
+        IJFMUYHelpers jfmuyHelpers = registry.getJFMUYHelpers();
+        IGuiHelper guiHelper = jfmuyHelpers.getGuiHelper();
         registry.addRecipeCategories(
-            new BreweryRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new PureDaisyRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new RunicAltarRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()), // Runic must come before petals. See williewillus/Botania#172
-            new PetalApothecaryRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new ElvenTradeRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new ManaPoolRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new OrechidRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new OrechidIgnemRecipeCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()),
-            new LexicaBotaniaCategory(
-                registry.getJFMUYHelpers()
-                    .getGuiHelper()));
+            new BreweryRecipeCategory(guiHelper),
+            new PureDaisyRecipeCategory(guiHelper),
+            new RunicAltarRecipeCategory(guiHelper), // Runic must come before petals. See williewillus/Botania#172
+            new PetalApothecaryRecipeCategory(guiHelper),
+            new ElvenTradeRecipeCategory(guiHelper),
+            new ManaPoolRecipeCategory(guiHelper),
+            new OrechidRecipeCategory(guiHelper),
+            new OrechidIgnemRecipeCategory(guiHelper),
+            new LexicaBotaniaCategory(guiHelper));
     }
 
     public static boolean doesOreExist(String key) {
