@@ -37,7 +37,6 @@ dependencies {
     implementation("com.github.Shigure-Ruiseki:OKCore:26.07.17.2:dev") { transitive = false }
     implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.18.0:dev') { transitive = false }
 
-    devOnlyNonPublishable(rfg.deobf("curse.maven:spark-361579:4271867"))
     devOnlyNonPublishable("com.github.GTNewHorizons:waila:1.19.30:dev") { transitive = false }
     devOnlyNonPublishable('com.github.GTNewHorizons:Botania:1.13.27-GTNH:dev') { transitive = false }
     devOnlyNonPublishable("com.github.GTNewHorizons:EnderIO:2.10.33:dev")
