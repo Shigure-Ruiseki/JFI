@@ -11,10 +11,8 @@ public class RecipeUidsTE {
     public static final String PULVERIZER_PETROTHEUM = "thermalexpansion.pulverizer_petrotheum";
 
     public static final String SAWMILL = "thermalexpansion.sawmill";
-    public static final String SAWMILL_TAPPER = "thermalexpansion.sawmill_tapper";
 
     public static final String SMELTER = "thermalexpansion.smelter";
-    public static final String SMELTER_PYROTHEUM = "thermalexpansion.smelter_pyrotheum";
 
     public static final String INSOLATOR = "thermalexpansion.insolator";
     public static final String INSOLATOR_TREE = "thermalexpansion.insolator_tree";
