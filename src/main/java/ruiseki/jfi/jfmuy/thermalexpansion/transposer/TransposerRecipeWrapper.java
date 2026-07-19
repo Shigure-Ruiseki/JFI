@@ -157,8 +157,13 @@ public class TransposerRecipeWrapper extends BaseRecipeWrapper {
             return;
         }
         progressBack.draw(minecraft, 63, 11);
-        ThermalExpansionPlugin.drawFluid(63, 11, guiFluids.get(0)
-            .getDisplayedIngredient(), 24, 16);
+        ThermalExpansionPlugin.drawFluid(
+            63,
+            11,
+            guiFluids.get(0)
+                .getDisplayedIngredient(),
+            24,
+            16);
         fluid.draw(minecraft, 63, 11);
         progress.draw(minecraft, 63, 11);
         speed.draw(minecraft, 67, 41);

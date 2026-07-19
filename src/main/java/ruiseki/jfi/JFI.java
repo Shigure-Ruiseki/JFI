@@ -105,4 +105,15 @@ public class JFI extends ModBase {
     public static void okLog(Level level, String message) {
         JFI.instance.log(level, message);
     }
+
+    /**
+     * Log a new message of the given level for this mod.
+     *
+     * @param level   The level in which the message must be shown.
+     * @param message The message to show.
+     * @param params  Parameters to replace in the message.
+     */
+    public static void okLog(Level level, String message, Object... params) {
+        JFI.instance.log(level, message, params);
+    }
 }

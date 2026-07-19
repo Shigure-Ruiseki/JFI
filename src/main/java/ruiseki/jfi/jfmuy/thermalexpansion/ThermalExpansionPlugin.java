@@ -8,13 +8,11 @@ import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
 import cofh.lib.render.RenderHelper;
+import ruiseki.jfi.jfmuy.thermalexpansion.smelter.SmelterRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.transposer.TransposerRecipeCategory;
-import ruiseki.jfmuy.api.IGuiHelper;
-import ruiseki.jfmuy.api.IJFMUYHelpers;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
-import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.okcore.client.renderer.GlStateManager;
@@ -24,15 +22,14 @@ public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        IJFMUYHelpers jfmuyHelpers = registry.getJFMUYHelpers();
-        IGuiHelper guiHelper = jfmuyHelpers.getGuiHelper();
-
+        SmelterRecipeCategory.register(registry);
         TransposerRecipeCategory.register(registry);
     }
 
     @Override
     public void register(IModRegistry registry) {
 
+        SmelterRecipeCategory.initialize(registry);
         TransposerRecipeCategory.initialize(registry);
 
         registry.getRecipeTransferRegistry()

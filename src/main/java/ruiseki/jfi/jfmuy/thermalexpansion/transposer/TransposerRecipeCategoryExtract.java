@@ -12,14 +12,15 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+
+import org.apache.logging.log4j.Level;
 
 import cofh.lib.util.helpers.FluidHelper;
 import cofh.thermalexpansion.block.machine.BlockMachine;
-import cofh.thermalexpansion.gui.client.machine.GuiTransposer;
 import cofh.thermalexpansion.util.crafting.TransposerManager;
 import cofh.thermalexpansion.util.crafting.TransposerManager.RecipeTransposer;
+import ruiseki.jfi.JFI;
 import ruiseki.jfi.jfmuy.thermalexpansion.RecipeUidsTE;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
@@ -28,7 +29,6 @@ import ruiseki.jfmuy.api.gui.IGuiFluidStackGroup;
 import ruiseki.jfmuy.api.gui.IGuiIngredient;
 import ruiseki.jfmuy.api.gui.IGuiItemStackGroup;
 import ruiseki.jfmuy.api.gui.IRecipeLayout;
-import ruiseki.jfmuy.api.ingredients.IIngredientRegistry;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IFocus;
@@ -38,16 +38,18 @@ import ruiseki.okcore.helper.LangHelpers;
 public class TransposerRecipeCategoryExtract extends TransposerRecipeCategory {
 
     public static void initialize(IModRegistry registry) {
+        try {
+            IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+            IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
-        IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-
-        registry.addRecipes(getRecipes(guiHelper, registry.getIngredientRegistry()), RecipeUidsTE.TRANSPOSER_EXTRACT);
-        registry.addRecipeCatalyst(BlockMachine.transposer, RecipeUidsTE.TRANSPOSER_EXTRACT);
+            registry.addRecipes(getRecipes(guiHelper), RecipeUidsTE.TRANSPOSER_EXTRACT);
+            registry.addRecipeCatalyst(BlockMachine.transposer, RecipeUidsTE.TRANSPOSER_EXTRACT);
+        } catch (Throwable t) {
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
+        }
     }
 
-    public static List<TransposerRecipeWrapper> getRecipes(IGuiHelper guiHelper,
-        IIngredientRegistry ingredientRegistry) {
+    public static List<TransposerRecipeWrapper> getRecipes(IGuiHelper guiHelper) {
 
         List<TransposerRecipeWrapper> recipes = new ArrayList<>();
 
