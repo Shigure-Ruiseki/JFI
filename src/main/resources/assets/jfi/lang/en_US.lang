@@ -1,7 +1,3 @@
-creativetab.okbase=OK Base
 
-#Tooltip
-
-#Item
-
-#Block
+gui.thermalexpansion.jei.transposer.modeEmpty=Empty
+gui.thermalexpansion.jei.transposer.modeFill=Fill
