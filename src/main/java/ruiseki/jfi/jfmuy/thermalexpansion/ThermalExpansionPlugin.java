@@ -8,6 +8,15 @@ import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
 import cofh.lib.render.RenderHelper;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.WorkbenchRecipeTransferHandler;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.machine.CraftingMachineRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.secure.CraftingSecureRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.upgrade.CraftingUpgradeRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.compression.CompressionFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.enervation.EnervationFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.magatic.MagmaticFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.reactant.ReactantFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.steam.SteamFuelCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.machine.charger.ChargerRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.machine.crusible.CrucibleRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.machine.furnace.FurnaceRecipeCategory;
@@ -23,11 +32,21 @@ import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.okcore.client.renderer.GlStateManager;
 
-@JFMUYPlugin
+@JFMUYPlugin("ThermalExpansion")
 public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
+        CompressionFuelCategory.register(registry);
+        EnervationFuelCategory.register(registry);
+        MagmaticFuelCategory.register(registry);
+        ReactantFuelCategory.register(registry);
+        SteamFuelCategory.register(registry);
+
+        CraftingMachineRecipeCategory.register(registry);
+        CraftingSecureRecipeCategory.register(registry);
+        CraftingUpgradeRecipeCategory.register(registry);
+
         ChargerRecipeCategory.register(registry);
         CrucibleRecipeCategory.register(registry);
         FurnaceRecipeCategory.register(registry);
@@ -40,6 +59,16 @@ public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
+        CompressionFuelCategory.initialize(registry);
+        EnervationFuelCategory.initialize(registry);
+        MagmaticFuelCategory.initialize(registry);
+        ReactantFuelCategory.initialize(registry);
+        SteamFuelCategory.initialize(registry);
+
+        CraftingMachineRecipeCategory.initialize(registry);
+        CraftingSecureRecipeCategory.initialize(registry);
+        CraftingUpgradeRecipeCategory.initialize(registry);
+
         ChargerRecipeCategory.initialize(registry);
         CrucibleRecipeCategory.initialize(registry);
         FurnaceRecipeCategory.initialize(registry);

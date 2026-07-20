@@ -2,6 +2,10 @@ package ruiseki.jfi.jfmuy.thermalexpansion;
 
 public class RecipeUidsTE {
 
+    public static final String CRAFTING_MACHINE = "thermalexpansion.crafting_machine";
+    public static final String CRAFTING_SECURE = "thermalexpansion.crafting_secure";
+    public static final String CRAFTING_UPGRADE = "thermalexpansion.crafting_upgrade";
+
     public static final String FURNACE = "thermalexpansion.furnace";
     public static final String FURNACE_FOOD = "thermalexpansion.furnace_food";
 

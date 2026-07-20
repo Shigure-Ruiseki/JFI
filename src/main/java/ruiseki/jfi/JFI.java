@@ -20,8 +20,7 @@ import ruiseki.okcore.proxy.ICommonProxy;
     modid = Reference.MOD_ID,
     name = Reference.MOD_NAME,
     version = Reference.VERSION,
-    dependencies = Reference.DEPENDENCIES,
-    guiFactory = Reference.GUI_FACTORY)
+    dependencies = Reference.DEPENDENCIES)
 public class JFI extends ModBase {
 
     @SidedProxy(serverSide = Reference.PROXY_COMMON, clientSide = Reference.PROXY_CLIENT)

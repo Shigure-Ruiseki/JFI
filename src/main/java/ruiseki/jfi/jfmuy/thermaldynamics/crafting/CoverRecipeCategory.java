@@ -1,11 +1,8 @@
-package ruiseki.jfi.jfmuy.thermaldynamics.cover;
+package ruiseki.jfi.jfmuy.thermaldynamics.crafting;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import cofh.thermaldynamics.duct.TDDucts;
-import cofh.thermaldynamics.item.TDItems;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -44,7 +41,10 @@ public class CoverRecipeCategory implements IRecipeCategory<CoverRecipeWrapper> 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void initialize(IModRegistry registry) {
         registry.addRecipes(getRecipes(), RecipeUidsTD.COVERS);
-        registry.addRecipeCatalyst(TDDucts.structure.itemStack, RecipeUidsTD.COVERS);
+        registry.addRecipeCatalyst(
+            ItemCover.getCoverList()
+                .getFirst(),
+            RecipeUidsTD.COVERS);
     }
 
     public static List<CoverRecipeWrapper> getRecipes() {

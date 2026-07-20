@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermaldynamics.cover;
+package ruiseki.jfi.jfmuy.thermaldynamics.crafting;
 
 import net.minecraft.item.ItemStack;
 

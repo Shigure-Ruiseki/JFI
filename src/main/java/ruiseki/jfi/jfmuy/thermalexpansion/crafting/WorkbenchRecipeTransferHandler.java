@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion;
+package ruiseki.jfi.jfmuy.thermalexpansion.crafting;
 
 import java.lang.reflect.Field;
 import java.util.List;

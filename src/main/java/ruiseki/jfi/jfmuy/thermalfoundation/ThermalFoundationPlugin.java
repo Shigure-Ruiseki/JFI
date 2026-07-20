@@ -10,7 +10,7 @@ import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.ingredients.IIngredientBlacklist;
 
-@JFMUYPlugin
+@JFMUYPlugin(value = "ThermalFoundation")
 public class ThermalFoundationPlugin implements IModPlugin {
 
     @Override
