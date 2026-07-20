@@ -1,0 +1,169 @@
+package ruiseki.jfi.jfmuy.thermalexpansion;
+
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.fluids.FluidStack;
+
+import org.lwjgl.opengl.GL11;
+
+import codechicken.lib.gui.GuiDraw;
+import cofh.lib.render.RenderHelper;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.WorkbenchRecipeTransferHandler;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.machine.CraftingMachineRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.secure.CraftingSecureRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.upgrade.CraftingUpgradeRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.compression.CompressionFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.enervation.EnervationFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.magatic.MagmaticFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.reactant.ReactantFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.dynamo.steam.SteamFuelCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.charger.ChargerRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.crusible.CrucibleRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.furnace.FurnaceRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.insolator.InsolatorRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.pulverizer.PulverizerRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.sawmill.SawmillRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.smelter.SmelterRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer.TransposerRecipeCategory;
+import ruiseki.jfmuy.api.IModPlugin;
+import ruiseki.jfmuy.api.IModRegistry;
+import ruiseki.jfmuy.api.JFMUYPlugin;
+import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.okcore.client.renderer.GlStateManager;
+
+@JFMUYPlugin("ThermalExpansion")
+public class ThermalExpansionPlugin implements IModPlugin {
+
+    @Override
+    public void registerCategories(IRecipeCategoryRegistration registry) {
+        CompressionFuelCategory.register(registry);
+        EnervationFuelCategory.register(registry);
+        MagmaticFuelCategory.register(registry);
+        ReactantFuelCategory.register(registry);
+        SteamFuelCategory.register(registry);
+
+        CraftingMachineRecipeCategory.register(registry);
+        CraftingSecureRecipeCategory.register(registry);
+        CraftingUpgradeRecipeCategory.register(registry);
+
+        ChargerRecipeCategory.register(registry);
+        CrucibleRecipeCategory.register(registry);
+        FurnaceRecipeCategory.register(registry);
+        InsolatorRecipeCategory.register(registry);
+        PulverizerRecipeCategory.register(registry);
+        SawmillRecipeCategory.register(registry);
+        SmelterRecipeCategory.register(registry);
+        TransposerRecipeCategory.register(registry);
+    }
+
+    @Override
+    public void register(IModRegistry registry) {
+        CompressionFuelCategory.initialize(registry);
+        EnervationFuelCategory.initialize(registry);
+        MagmaticFuelCategory.initialize(registry);
+        ReactantFuelCategory.initialize(registry);
+        SteamFuelCategory.initialize(registry);
+
+        CraftingMachineRecipeCategory.initialize(registry);
+        CraftingSecureRecipeCategory.initialize(registry);
+        CraftingUpgradeRecipeCategory.initialize(registry);
+
+        ChargerRecipeCategory.initialize(registry);
+        CrucibleRecipeCategory.initialize(registry);
+        FurnaceRecipeCategory.initialize(registry);
+        InsolatorRecipeCategory.initialize(registry);
+        PulverizerRecipeCategory.initialize(registry);
+        SawmillRecipeCategory.initialize(registry);
+        SmelterRecipeCategory.initialize(registry);
+        TransposerRecipeCategory.initialize(registry);
+
+        registry.getRecipeTransferRegistry()
+            .addRecipeTransferHandler(new WorkbenchRecipeTransferHandler(), VanillaRecipeCategoryUid.CRAFTING);
+    }
+
+    public static void drawFluid(int x, int y, FluidStack fluid, int width, int height) {
+        if (fluid == null || fluid.getFluid() == null) {
+            return;
+        }
+
+        int renderX = x;
+        int renderY = y;
+        int renderWidth = width;
+        int renderHeight = height;
+
+        GL11.glPushMatrix();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+        RenderHelper.setBlockTextureSheet();
+
+        int color = fluid.getFluid()
+            .getColor(fluid);
+        float alpha = (float) (color >> 24 & 255) / 255.0F;
+        float red = (float) (color >> 16 & 255) / 255.0F;
+        float green = (float) (color >> 8 & 255) / 255.0F;
+        float blue = (float) (color & 255) / 255.0F;
+        if (alpha == 0.0F) alpha = 1.0F;
+
+        GlStateManager.color(red, green, blue, alpha);
+
+        IIcon stillIcon = fluid.getFluid()
+            .getStillIcon();
+        if (stillIcon == null) {
+            stillIcon = fluid.getFluid()
+                .getIcon(fluid);
+        }
+
+        if (stillIcon != null) {
+            drawTiledTexture(renderX, renderY, stillIcon, renderWidth, renderHeight, x, y);
+        }
+
+        GL11.glPopMatrix();
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    public static void drawTiledTexture(int x, int y, IIcon icon, int width, int height, int baseX, int baseY) {
+        if (icon == null) return;
+
+        int drawHeight;
+        int drawWidth;
+
+        for (int i = 0; i < width; i += 16) {
+            for (int j = 0; j < height; j += 16) {
+                drawWidth = Math.min(width - i, 16);
+                drawHeight = Math.min(height - j, 16);
+
+                drawDirectionalIcon(x + i, y + j, icon, drawWidth, drawHeight, baseX, baseY);
+            }
+        }
+    }
+
+    private static void drawDirectionalIcon(int x, int y, IIcon icon, int width, int height, int baseX, int baseY) {
+        double minU = icon.getMinU();
+        double maxU = icon.getMaxU();
+        double minV = icon.getMinV();
+        double maxV = icon.getMaxV();
+
+        double uLength = maxU - minU;
+        double vLength = maxV - minV;
+
+        int relativeX = x - baseX;
+        int relativeY = y - baseY;
+
+        double targetMinU = minU + uLength * (double) (relativeX % 16) / 16.0D;
+        double targetMaxU = targetMinU + uLength * (double) width / 16.0D;
+
+        double targetMinV = minV + vLength * (double) (relativeY % 16) / 16.0D;
+        double targetMaxV = targetMinV + vLength * (double) height / 16.0D;
+
+        double zLevel = GuiDraw.gui.getZLevel();
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        tessellator.addVertexWithUV((double) x, (double) (y + height), zLevel, targetMinU, targetMaxV);
+        tessellator.addVertexWithUV((double) (x + width), (double) (y + height), zLevel, targetMaxU, targetMaxV);
+        tessellator.addVertexWithUV((double) (x + width), (double) y, zLevel, targetMaxU, targetMinV);
+        tessellator.addVertexWithUV((double) x, (double) y, zLevel, targetMinU, targetMinV);
+        tessellator.draw();
+    }
+}

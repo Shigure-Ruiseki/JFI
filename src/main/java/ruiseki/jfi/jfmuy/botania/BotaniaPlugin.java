@@ -67,7 +67,7 @@ import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.item.brew.ItemBrewFlask;
 import vazkii.botania.common.item.brew.ItemBrewVial;
 
-@JFMUYPlugin
+@JFMUYPlugin(value = "Botania")
 public class BotaniaPlugin implements IModPlugin {
 
     @Override

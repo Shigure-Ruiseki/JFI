@@ -20,8 +20,7 @@ import ruiseki.okcore.proxy.ICommonProxy;
     modid = Reference.MOD_ID,
     name = Reference.MOD_NAME,
     version = Reference.VERSION,
-    dependencies = Reference.DEPENDENCIES,
-    guiFactory = Reference.GUI_FACTORY)
+    dependencies = Reference.DEPENDENCIES)
 public class JFI extends ModBase {
 
     @SidedProxy(serverSide = Reference.PROXY_COMMON, clientSide = Reference.PROXY_CLIENT)
@@ -104,5 +103,16 @@ public class JFI extends ModBase {
      */
     public static void okLog(Level level, String message) {
         JFI.instance.log(level, message);
+    }
+
+    /**
+     * Log a new message of the given level for this mod.
+     *
+     * @param level   The level in which the message must be shown.
+     * @param message The message to show.
+     * @param params  Parameters to replace in the message.
+     */
+    public static void okLog(Level level, String message, Object... params) {
+        JFI.instance.log(level, message, params);
     }
 }

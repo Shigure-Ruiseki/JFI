@@ -1,7 +1,6 @@
-creativetab.okbase=OK Base
 
-#Tooltip
+gui.thermalexpansion.jei.transposer.modeEmpty=Empty
+gui.thermalexpansion.jei.transposer.modeFill=Fill
 
-#Item
-
-#Block
+info.cofh.chance=Chance
+info.cofh.energy=Energy

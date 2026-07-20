@@ -22,7 +22,7 @@ import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 
-@JFMUYPlugin
+@JFMUYPlugin(value = "EnderIO")
 public class EnderIOPlugin implements IModPlugin {
 
     @Override

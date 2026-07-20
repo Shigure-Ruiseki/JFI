@@ -5,7 +5,7 @@ public class Reference {
     public static final String MOD_ID = Tags.MOD_ID;
     public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String VERSION = Tags.VERSION;
-    public static final String DEPENDENCIES = "required-after:jfmuy@[26.07.18.0,);"
+    public static final String DEPENDENCIES = "required-after:jfmuy@[26.07.20.1,);"
         + "required-after:okcore@[26.07.17.2,);";
 
     public static final String UPDATE_URL = "";
