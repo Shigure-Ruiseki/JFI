@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion.smelter;
+package ruiseki.jfi.jfmuy.thermalexpansion.machine.smelter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import cofh.lib.util.helpers.ItemHelper;
 import cofh.thermalexpansion.ThermalExpansion;
 import cofh.thermalexpansion.util.crafting.SmelterManager;
 import cofh.thermalexpansion.util.crafting.SmelterManager.RecipeSmelter;
-import ruiseki.jfi.jfmuy.thermalexpansion.BaseRecipeWrapper;
 import ruiseki.jfi.jfmuy.thermalexpansion.Drawables;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.BaseRecipeWrapper;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.gui.IDrawableStatic;

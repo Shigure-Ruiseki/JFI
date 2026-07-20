@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion;
+package ruiseki.jfi.jfmuy.thermalexpansion.machine;
 
 import java.util.Collections;
 import java.util.List;

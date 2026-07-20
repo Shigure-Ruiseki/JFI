@@ -8,9 +8,14 @@ import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
 import cofh.lib.render.RenderHelper;
-import ruiseki.jfi.jfmuy.thermalexpansion.sawmill.SawmillRecipeCategory;
-import ruiseki.jfi.jfmuy.thermalexpansion.smelter.SmelterRecipeCategory;
-import ruiseki.jfi.jfmuy.thermalexpansion.transposer.TransposerRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.charger.ChargerRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.crusible.CrucibleRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.furnace.FurnaceRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.insolator.InsolatorRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.pulverizer.PulverizerRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.sawmill.SawmillRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.smelter.SmelterRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer.TransposerRecipeCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
@@ -23,6 +28,11 @@ public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
+        ChargerRecipeCategory.register(registry);
+        CrucibleRecipeCategory.register(registry);
+        FurnaceRecipeCategory.register(registry);
+        InsolatorRecipeCategory.register(registry);
+        PulverizerRecipeCategory.register(registry);
         SawmillRecipeCategory.register(registry);
         SmelterRecipeCategory.register(registry);
         TransposerRecipeCategory.register(registry);
@@ -30,6 +40,11 @@ public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
+        ChargerRecipeCategory.initialize(registry);
+        CrucibleRecipeCategory.initialize(registry);
+        FurnaceRecipeCategory.initialize(registry);
+        InsolatorRecipeCategory.initialize(registry);
+        PulverizerRecipeCategory.initialize(registry);
         SawmillRecipeCategory.initialize(registry);
         SmelterRecipeCategory.initialize(registry);
         TransposerRecipeCategory.initialize(registry);

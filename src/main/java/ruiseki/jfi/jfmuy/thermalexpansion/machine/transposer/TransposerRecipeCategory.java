@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion.transposer;
+package ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer;
 
 import javax.annotation.Nonnull;
 
@@ -6,9 +6,9 @@ import net.minecraft.client.Minecraft;
 
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermalexpansion.gui.client.machine.GuiTransposer;
-import ruiseki.jfi.jfmuy.thermalexpansion.BaseRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.Drawables;
 import ruiseki.jfi.jfmuy.thermalexpansion.RecipeUidsTE;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.BaseRecipeCategory;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
 import ruiseki.jfmuy.api.IModRegistry;

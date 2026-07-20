@@ -4,18 +4,14 @@ public class RecipeUidsTE {
 
     public static final String FURNACE = "thermalexpansion.furnace";
     public static final String FURNACE_FOOD = "thermalexpansion.furnace_food";
-    public static final String FURNACE_ORE = "thermalexpansion.furnace_ore";
-    public static final String FURNACE_PYROLYSIS = "thermalexpansion.furnace_pyrolysis";
 
     public static final String PULVERIZER = "thermalexpansion.pulverizer";
-    public static final String PULVERIZER_PETROTHEUM = "thermalexpansion.pulverizer_petrotheum";
 
     public static final String SAWMILL = "thermalexpansion.sawmill";
 
     public static final String SMELTER = "thermalexpansion.smelter";
 
     public static final String INSOLATOR = "thermalexpansion.insolator";
-    public static final String INSOLATOR_TREE = "thermalexpansion.insolator_tree";
 
     public static final String COMPACTOR = "thermalexpansion.compactor";
     public static final String COMPACTOR_COIN = "thermalexpansion.compactor_mint";

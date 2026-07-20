@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion.transposer;
+package ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer;
 
 import static java.util.Collections.singletonList;
 
@@ -15,10 +15,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import cofh.lib.util.helpers.ItemHelper;
 import cofh.thermalexpansion.ThermalExpansion;
 import cofh.thermalexpansion.util.crafting.TransposerManager;
-import ruiseki.jfi.jfmuy.thermalexpansion.BaseRecipeWrapper;
 import ruiseki.jfi.jfmuy.thermalexpansion.Drawables;
 import ruiseki.jfi.jfmuy.thermalexpansion.RecipeUidsTE;
 import ruiseki.jfi.jfmuy.thermalexpansion.ThermalExpansionPlugin;
+import ruiseki.jfi.jfmuy.thermalexpansion.machine.BaseRecipeWrapper;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.gui.IDrawableStatic;

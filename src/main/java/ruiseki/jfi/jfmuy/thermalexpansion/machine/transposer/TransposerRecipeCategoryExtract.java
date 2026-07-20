@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.thermalexpansion.transposer;
+package ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer;
 
 import static java.util.Collections.singletonList;
 import static ruiseki.jfmuy.api.recipe.IFocus.Mode.INPUT;
@@ -35,15 +35,15 @@ import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IFocus;
 import ruiseki.okcore.fluid.FluidHelpers;
 
-public class TransposerRecipeCategoryFill extends TransposerRecipeCategory {
+public class TransposerRecipeCategoryExtract extends TransposerRecipeCategory {
 
     public static void initialize(IModRegistry registry) {
         try {
             IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
             IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
-            registry.addRecipes(getRecipes(guiHelper), RecipeUidsTE.TRANSPOSER_FILL);
-            registry.addRecipeCatalyst(BlockMachine.transposer, RecipeUidsTE.TRANSPOSER_FILL);
+            registry.addRecipes(getRecipes(guiHelper), RecipeUidsTE.TRANSPOSER_EXTRACT);
+            registry.addRecipeCatalyst(BlockMachine.transposer, RecipeUidsTE.TRANSPOSER_EXTRACT);
         } catch (Throwable t) {
             JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
@@ -53,25 +53,25 @@ public class TransposerRecipeCategoryFill extends TransposerRecipeCategory {
 
         List<TransposerRecipeWrapper> recipes = new ArrayList<>();
 
-        for (RecipeTransposer recipe : TransposerManager.getFillRecipeList()) {
-            recipes.add(new TransposerRecipeWrapper(guiHelper, recipe, RecipeUidsTE.TRANSPOSER_FILL));
+        for (RecipeTransposer recipe : TransposerManager.getExtractionRecipeList()) {
+            recipes.add(new TransposerRecipeWrapper(guiHelper, recipe, RecipeUidsTE.TRANSPOSER_EXTRACT));
         }
         return recipes;
     }
 
-    public TransposerRecipeCategoryFill(IGuiHelper guiHelper) {
+    public TransposerRecipeCategoryExtract(IGuiHelper guiHelper) {
 
         super(guiHelper);
 
-        localizedName += " - " + StringHelper.localize("gui.thermalexpansion.jei.transposer.modeFill");
-        icon = guiHelper.createDrawableIngredient(new ItemStack(Items.water_bucket));
+        localizedName += " - " + StringHelper.localize("gui.thermalexpansion.jei.transposer.modeEmpty");
+        icon = guiHelper.createDrawableIngredient(new ItemStack(Items.bucket));
     }
 
     @Nonnull
     @Override
     public String getUid() {
 
-        return RecipeUidsTE.TRANSPOSER_FILL;
+        return RecipeUidsTE.TRANSPOSER_EXTRACT;
     }
 
     @Override
@@ -79,14 +79,14 @@ public class TransposerRecipeCategoryFill extends TransposerRecipeCategory {
 
         List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
         List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-        List<List<FluidStack>> fluids = ingredients.getInputs(VanillaTypes.FLUID);
+        List<List<FluidStack>> fluids = ingredients.getOutputs(VanillaTypes.FLUID);
 
         IFocus<?> focus = recipeLayout.getFocus();
         if (focus != null) {
-            if (focus.getMode() == OUTPUT && focus.getValue() instanceof ItemStack) {
+            if (focus.getMode() == INPUT && focus.getValue() instanceof ItemStack) {
                 List<FluidStack> focusFluids = new ArrayList<>();
-                ItemStack output = (ItemStack) focus.getValue();
-                FluidStack contained = FluidHelpers.getFluidContained(output);
+                ItemStack input = (ItemStack) focus.getValue();
+                FluidStack contained = FluidHelpers.getFluidContained(input);
                 if (contained != null) {
                     for (FluidStack fluid : fluids.get(0)) {
                         if (FluidHelper.isFluidEqual(contained, fluid)) {
@@ -98,18 +98,18 @@ public class TransposerRecipeCategoryFill extends TransposerRecipeCategory {
                         fluids = singletonList(focusFluids);
                     }
                 }
-            } else if (focus.getMode() == INPUT && focus.getValue() instanceof FluidStack) {
-                List<ItemStack> focusOutputs = new ArrayList<>();
+            } else if (focus.getMode() == OUTPUT && focus.getValue() instanceof FluidStack) {
+                List<ItemStack> focusInputs = new ArrayList<>();
                 FluidStack fluid = (FluidStack) focus.getValue();
-                for (ItemStack stack : outputs.get(0)) {
+                for (ItemStack stack : inputs.get(0)) {
                     FluidStack contained = FluidHelpers.getFluidContained(stack);
                     if (contained == null || FluidHelper.isFluidEqual(fluid, contained)) {
-                        focusOutputs.add(stack);
+                        focusInputs.add(stack);
                     }
                 }
-                if (focusOutputs.size() != inputs.get(0)
+                if (focusInputs.size() != inputs.get(0)
                     .size()) {
-                    outputs = singletonList(focusOutputs);
+                    inputs = singletonList(focusInputs);
                 }
             }
         }
@@ -122,11 +122,18 @@ public class TransposerRecipeCategoryFill extends TransposerRecipeCategory {
 
         guiItemStacks.init(0, true, 30, 10);
         guiItemStacks.init(1, false, 30, 41);
-        guiFluidStacks.init(0, true, 103, 1, 16, 60, FluidHelpers.BUCKET_VOLUME, false, tankOverlay);
+        guiFluidStacks.init(0, false, 103, 1, 16, 60, FluidHelpers.BUCKET_VOLUME, false, tankOverlay);
 
         guiItemStacks.set(0, inputs.get(0));
-        guiItemStacks.set(1, outputs.get(0));
+        guiItemStacks.set(1, outputs.isEmpty() ? null : outputs.get(0));
         guiFluidStacks.set(0, fluids.get(0));
+
+        guiItemStacks.addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
+
+            if (slotIndex == 1 && recipeWrapper.chance < 100) {
+                tooltip.add(StringHelper.localize("info.cofh.chance") + ": " + recipeWrapper.chance + "%");
+            }
+        });
     }
 
 }
