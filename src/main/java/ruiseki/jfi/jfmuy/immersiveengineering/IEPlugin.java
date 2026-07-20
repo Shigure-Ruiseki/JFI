@@ -1,5 +1,6 @@
 package ruiseki.jfi.jfmuy.immersiveengineering;
 
+import ruiseki.jfi.jfmuy.immersiveengineering.arcfurnace.ArcFurnaceRecipeCategory;
 import ruiseki.jfi.jfmuy.immersiveengineering.blastfurnace.BlastFurnaceRecipeCategory;
 import ruiseki.jfi.jfmuy.immersiveengineering.bottling.BottlingRecipeCategory;
 import ruiseki.jfi.jfmuy.immersiveengineering.cokeoven.CokeOvenRecipeCategory;
@@ -16,6 +17,7 @@ public class IEPlugin implements IModPlugin {
         CokeOvenRecipeCategory.register(registry);
         BottlingRecipeCategory.register(registry);
         BlastFurnaceRecipeCategory.register(registry);
+        ArcFurnaceRecipeCategory.register(registry);
     }
 
     @Override
@@ -23,5 +25,6 @@ public class IEPlugin implements IModPlugin {
         CokeOvenRecipeCategory.initialize(registry);
         BottlingRecipeCategory.initialize(registry);
         BlastFurnaceRecipeCategory.initialize(registry);
+        ArcFurnaceRecipeCategory.initialize(registry);
     }
 }

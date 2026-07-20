@@ -1,12 +1,17 @@
 package ruiseki.jfi.jfmuy.immersiveengineering.blastfurnace;
 
-import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
-import blusunrize.immersiveengineering.common.IEContent;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import org.apache.logging.log4j.Level;
+
+import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
+import blusunrize.immersiveengineering.common.IEContent;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
@@ -19,9 +24,6 @@ import ruiseki.jfmuy.api.gui.IRecipeLayout;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BlastFurnaceRecipeCategory implements IRecipeCategory<BlastFurnaceRecipeWrapper> {
 
@@ -68,10 +70,12 @@ public class BlastFurnaceRecipeCategory implements IRecipeCategory<BlastFurnaceR
         this.background = guiHelper.createDrawable(texture, 0, 8, 176, 68);
 
         IDrawableStatic staticFlame = guiHelper.createDrawable(texture, 179, 0, 14, 14);
-        this.flameAnimation = guiHelper.createAnimatedDrawable(staticFlame, 200, IDrawableAnimated.StartDirection.TOP, true);
+        this.flameAnimation = guiHelper
+            .createAnimatedDrawable(staticFlame, 200, IDrawableAnimated.StartDirection.TOP, true);
 
         IDrawableStatic staticArrow = guiHelper.createDrawable(texture, 179, 14, 24, 17);
-        this.progressArrow = guiHelper.createAnimatedDrawable(staticArrow, 200, IDrawableAnimated.StartDirection.LEFT, false);
+        this.progressArrow = guiHelper
+            .createAnimatedDrawable(staticArrow, 200, IDrawableAnimated.StartDirection.LEFT, false);
 
         this.title = StatCollector.translateToLocal("desc.ImmersiveEngineering.name.blastFurnace");
     }
@@ -103,7 +107,8 @@ public class BlastFurnaceRecipeCategory implements IRecipeCategory<BlastFurnaceR
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, BlastFurnaceRecipeWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, BlastFurnaceRecipeWrapper recipeWrapper,
+        IIngredients ingredients) {
         IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
 
         itemStacks.init(0, true, 51, 8);

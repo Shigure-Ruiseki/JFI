@@ -1,19 +1,20 @@
 package ruiseki.jfi.jfmuy.immersiveengineering.blastfurnace;
 
-import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
-import blusunrize.immersiveengineering.client.ClientUtils;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
+
+import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
+import blusunrize.immersiveengineering.client.ClientUtils;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BlastFurnaceRecipeWrapper implements IRecipeWrapper {
 
@@ -64,13 +65,14 @@ public class BlastFurnaceRecipeWrapper implements IRecipeWrapper {
         float seconds = recipe.time / 20.0F;
         String timeString = seconds + "s";
 
-        ClientUtils.font().drawString(
-            timeString,
-            125 - ClientUtils.font().getStringWidth(timeString) / 2,
-            32,
-            11184810,
-            true
-        );
+        ClientUtils.font()
+            .drawString(
+                timeString,
+                125 - ClientUtils.font()
+                    .getStringWidth(timeString) / 2,
+                32,
+                11184810,
+                true);
     }
 
     @Override
@@ -82,10 +84,10 @@ public class BlastFurnaceRecipeWrapper implements IRecipeWrapper {
                 ItemStack currentFuel = fuels.get(ticks % fuels.size());
                 if (currentFuel != null && BlastFurnaceRecipe.isValidBlastFuel(currentFuel)) {
                     List<String> tooltip = new ArrayList<>();
-                    tooltip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted(
-                        "desc.ImmersiveEngineering.info.blastFuelTime",
-                        BlastFurnaceRecipe.getBlastFuelTime(currentFuel)
-                    ));
+                    tooltip.add(
+                        EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted(
+                            "desc.ImmersiveEngineering.info.blastFuelTime",
+                            BlastFurnaceRecipe.getBlastFuelTime(currentFuel)));
                     return tooltip;
                 }
             }

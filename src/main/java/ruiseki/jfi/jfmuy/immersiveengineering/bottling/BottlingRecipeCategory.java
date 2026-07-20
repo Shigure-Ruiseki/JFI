@@ -135,8 +135,7 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, BottlingRecipeWrapper recipeWrapper,
-        IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, BottlingRecipeWrapper recipeWrapper, IIngredients ingredients) {
         IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
         IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
 
