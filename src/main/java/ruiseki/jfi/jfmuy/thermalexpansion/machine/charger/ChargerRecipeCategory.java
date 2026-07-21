@@ -60,7 +60,6 @@ public class ChargerRecipeCategory extends BaseRecipeCategory<ChargerRecipeWrapp
     public static List<ChargerRecipeWrapper> getRecipes(IGuiHelper guiHelper) {
         List<ChargerRecipeWrapper> recipes = new ArrayList<>();
 
-        // 1. Thêm các công thức đăng ký tĩnh mặc định từ Thermal Expansion (như Certus Quartz)
         for (ChargerManager.RecipeCharger recipe : ChargerManager.getRecipeList()) {
             if (recipe != null) {
                 recipes.add(new ChargerRecipeWrapper(guiHelper, recipe));

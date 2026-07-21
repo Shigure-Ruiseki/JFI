@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.apache.logging.log4j.Level;
@@ -70,7 +69,7 @@ public class MetalPressRecipeCategory implements IRecipeCategory<MetalPressRecip
     private final String title;
 
     public MetalPressRecipeCategory(IGuiHelper guiHelper) {
-        this.background = guiHelper.createBlankDrawable( 166, 54);
+        this.background = guiHelper.createBlankDrawable(166, 54);
         this.title = StatCollector.translateToLocal("tile.ImmersiveEngineering.metalMultiblock.metalPress.name");
     }
 
