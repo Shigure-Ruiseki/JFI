@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -11,6 +12,7 @@ import net.minecraft.util.StatCollector;
 
 import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import blusunrize.immersiveengineering.api.crafting.BottlingMachineRecipe;
 import blusunrize.immersiveengineering.client.ClientUtils;
@@ -46,7 +48,6 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
             IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
             registry.addRecipes(getRecipes(guiHelper), UID);
-
             registry.addRecipeCatalyst(new ItemStack(IEContent.blockMetalMultiblocks, 1, 0), UID);
 
         } catch (Throwable t) {
@@ -66,6 +67,7 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
 
     private final IDrawable background;
     private final IDrawable tankOverlay;
+    private final IDrawable slotDrawable;
     private final IDrawableAnimated progressBar;
     private final String title;
 
@@ -73,11 +75,11 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
         ResourceLocation guiTex = new ResourceLocation("immersiveengineering", "textures/gui/fluidProducer.png");
         ResourceLocation furnaceTex = new ResourceLocation("textures/gui/container/furnace.png");
 
-        this.background = guiHelper.createDrawable(guiTex, 0, 0, 176, 68);
-
+        this.background = guiHelper.createBlankDrawable(146, 70);
         this.tankOverlay = guiHelper.createDrawable(guiTex, 179, 33, 16, 47);
+        this.slotDrawable = guiHelper.getSlotDrawable();
 
-        IDrawableStatic staticProgress = guiHelper.createDrawable(furnaceTex, 179, 14, 22, 16);
+        IDrawableStatic staticProgress = guiHelper.createDrawable(furnaceTex, 179, 14, 20, 16);
         this.progressBar = guiHelper
             .createAnimatedDrawable(staticProgress, 30, IDrawableAnimated.StartDirection.LEFT, false);
 
@@ -106,6 +108,10 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
 
     @Override
     public void drawExtras(Minecraft minecraft) {
+        ClientUtils.drawSlot(46, 8, 16, 16);
+        ClientUtils.drawSlot(105, 8, 20, 20);
+        ClientUtils.drawSlot(16, 22, 18, 50);
+
         progressBar.draw(minecraft, 74, 8);
 
         GL11.glPushMatrix();
@@ -115,6 +121,10 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
 
         GL11.glPushMatrix();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+        RenderHelper.enableGUIStandardItemLighting();
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+
         GL11.glTranslatef(89.0F, 50.0F, 100.0F);
         GL11.glRotatef(-45.0F, 1.0F, 0.0F, 0.0F);
         GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
@@ -131,6 +141,8 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
         ClientUtils.tes()
             .draw();
         TileEntityRendererDispatcher.instance.renderTileEntityAt(tile, 0.0D, 0.0D, 0.0D, 0.0F);
+
+        RenderHelper.disableStandardItemLighting();
         GL11.glPopMatrix();
     }
 
@@ -140,9 +152,9 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
         IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
 
         itemStacks.init(0, true, 45, 7);
-        itemStacks.init(1, false, 106, 7);
+        itemStacks.init(1, false, 104, 7);
 
-        fluidStacks.init(0, true, 16, 8, 16, 48, 16000, true, null);
+        fluidStacks.init(0, true, 15, 5, 18, 50, 16000, true, null);
 
         itemStacks.set(ingredients);
         fluidStacks.set(ingredients);

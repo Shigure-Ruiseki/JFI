@@ -47,14 +47,14 @@ public class BottlingRecipeWrapper implements IRecipeWrapper {
         int processTicks = 30;
         float seconds = processTicks / 20.0F;
 
-        String timeString = seconds + "s / " + processTicks + " Ticks";
+        String timeString = seconds + "s";
 
         ClientUtils.font()
             .drawString(
                 timeString,
-                88 - ClientUtils.font()
+                80 - ClientUtils.font()
                     .getStringWidth(timeString) / 2,
-                55,
+                60,
                 11184810,
                 true);
     }

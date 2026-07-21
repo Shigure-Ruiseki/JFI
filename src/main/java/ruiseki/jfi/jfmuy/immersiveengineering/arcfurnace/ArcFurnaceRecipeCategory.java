@@ -11,7 +11,6 @@ import net.minecraft.util.StatCollector;
 import org.apache.logging.log4j.Level;
 
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
-import blusunrize.immersiveengineering.client.ClientUtils;
 import blusunrize.immersiveengineering.common.IEContent;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
@@ -76,23 +75,7 @@ public class ArcFurnaceRecipeCategory implements IRecipeCategory<ArcFurnaceRecip
             IDrawableAnimated.StartDirection.LEFT,
             false);
 
-        this.slotDrawable = new IDrawable() {
-
-            @Override
-            public int getWidth() {
-                return 18;
-            }
-
-            @Override
-            public int getHeight() {
-                return 18;
-            }
-
-            @Override
-            public void draw(Minecraft mc, int x, int y) {
-                ClientUtils.drawSlot(x + 1, y + 1, 16, 16);
-            }
-        };
+        this.slotDrawable = guiHelper.getSlotDrawable();
 
         this.title = StatCollector.translateToLocal("tile.ImmersiveEngineering.metalMultiblock.arcFurnace.name");
     }
