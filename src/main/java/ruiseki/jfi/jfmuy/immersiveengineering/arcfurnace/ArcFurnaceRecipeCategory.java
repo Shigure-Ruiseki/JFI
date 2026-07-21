@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Level;
 
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import blusunrize.immersiveengineering.common.IEContent;
+import blusunrize.immersiveengineering.common.blocks.metal.BlockMetalMultiblocks;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
@@ -40,7 +41,9 @@ public class ArcFurnaceRecipeCategory implements IRecipeCategory<ArcFurnaceRecip
             IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
             registry.addRecipes(getRecipes(guiHelper), UID);
-            registry.addRecipeCatalyst(new ItemStack(IEContent.blockMetalMultiblocks, 1, 5), UID);
+            registry.addRecipeCatalyst(
+                new ItemStack(IEContent.blockMetalMultiblocks, 1, BlockMetalMultiblocks.META_arcFurnace),
+                UID);
 
         } catch (Throwable t) {
             JFI.okLog(Level.ERROR, "Bad/null recipe!", t);

@@ -38,7 +38,7 @@ public class BlueprintRecipeCategory implements IRecipeCategory<BlueprintRecipeW
             IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
             registry.addRecipes(getRecipes(), UID);
-            registry.addRecipeCatalyst(new ItemStack(IEContent.blockWoodenDevice, 1, 4), UID);
+            registry.addRecipeCatalyst(new ItemStack(IEContent.blockWoodenDevice, 1, 5), UID);
 
         } catch (Throwable t) {
             JFI.okLog(Level.ERROR, "Bad/null recipe!", t);

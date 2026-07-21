@@ -5,6 +5,9 @@ import ruiseki.jfi.jfmuy.immersiveengineering.blastfurnace.BlastFurnaceRecipeCat
 import ruiseki.jfi.jfmuy.immersiveengineering.blueprint.BlueprintRecipeCategory;
 import ruiseki.jfi.jfmuy.immersiveengineering.bottling.BottlingRecipeCategory;
 import ruiseki.jfi.jfmuy.immersiveengineering.cokeoven.CokeOvenRecipeCategory;
+import ruiseki.jfi.jfmuy.immersiveengineering.crusher.CrusherRecipeCategory;
+import ruiseki.jfi.jfmuy.immersiveengineering.fermenter.FermenterRecipeCategory;
+import ruiseki.jfi.jfmuy.immersiveengineering.metalpress.MetalPressRecipeCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
@@ -15,11 +18,14 @@ public class IEPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        CokeOvenRecipeCategory.register(registry);
+        ArcFurnaceRecipeCategory.register(registry);
         BottlingRecipeCategory.register(registry);
         BlueprintRecipeCategory.register(registry);
         BlastFurnaceRecipeCategory.register(registry);
-        ArcFurnaceRecipeCategory.register(registry);
+        CokeOvenRecipeCategory.register(registry);
+        CrusherRecipeCategory.register(registry);
+        FermenterRecipeCategory.register(registry);
+        MetalPressRecipeCategory.register(registry);
     }
 
     @Override
@@ -29,5 +35,8 @@ public class IEPlugin implements IModPlugin {
         BlueprintRecipeCategory.initialize(registry);
         BlastFurnaceRecipeCategory.initialize(registry);
         ArcFurnaceRecipeCategory.initialize(registry);
+        CrusherRecipeCategory.initialize(registry);
+        FermenterRecipeCategory.initialize(registry);
+        MetalPressRecipeCategory.initialize(registry);
     }
 }

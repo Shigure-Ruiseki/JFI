@@ -17,6 +17,7 @@ import org.lwjgl.opengl.GL12;
 import blusunrize.immersiveengineering.api.crafting.BottlingMachineRecipe;
 import blusunrize.immersiveengineering.client.ClientUtils;
 import blusunrize.immersiveengineering.common.IEContent;
+import blusunrize.immersiveengineering.common.blocks.metal.BlockMetalMultiblocks;
 import blusunrize.immersiveengineering.common.blocks.metal.TileEntityBottlingMachine;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
@@ -48,7 +49,9 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
             IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
             registry.addRecipes(getRecipes(guiHelper), UID);
-            registry.addRecipeCatalyst(new ItemStack(IEContent.blockMetalMultiblocks, 1, 0), UID);
+            registry.addRecipeCatalyst(
+                new ItemStack(IEContent.blockMetalMultiblocks, 1, BlockMetalMultiblocks.META_bottlingMachine),
+                UID);
 
         } catch (Throwable t) {
             JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
@@ -65,9 +68,9 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
         return recipes;
     }
 
+    private static TileEntityBottlingMachine dummyTile;
     private final IDrawable background;
     private final IDrawable tankOverlay;
-    private final IDrawable slotDrawable;
     private final IDrawableAnimated progressBar;
     private final String title;
 
@@ -77,7 +80,6 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
 
         this.background = guiHelper.createBlankDrawable(146, 70);
         this.tankOverlay = guiHelper.createDrawable(guiTex, 179, 33, 16, 47);
-        this.slotDrawable = guiHelper.getSlotDrawable();
 
         IDrawableStatic staticProgress = guiHelper.createDrawable(furnaceTex, 179, 14, 20, 16);
         this.progressBar = guiHelper
@@ -130,17 +132,19 @@ public class BottlingRecipeCategory implements IRecipeCategory<BottlingRecipeWra
         GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
         GL11.glScalef(12.0F, -12.0F, 12.0F);
 
-        TileEntityBottlingMachine tile = new TileEntityBottlingMachine();
-        tile.pos = 4;
-        tile.formed = true;
+        if (dummyTile == null) {
+            dummyTile = new TileEntityBottlingMachine();
+            dummyTile.pos = 4;
+            dummyTile.formed = true;
+        }
 
         ClientUtils.bindAtlas(0);
         ClientUtils.tes()
             .startDrawingQuads();
-        ClientUtils.handleStaticTileRenderer(tile, false);
+        ClientUtils.handleStaticTileRenderer(dummyTile, false);
         ClientUtils.tes()
             .draw();
-        TileEntityRendererDispatcher.instance.renderTileEntityAt(tile, 0.0D, 0.0D, 0.0D, 0.0F);
+        TileEntityRendererDispatcher.instance.renderTileEntityAt(dummyTile, 0.0D, 0.0D, 0.0D, 0.0F);
 
         RenderHelper.disableStandardItemLighting();
         GL11.glPopMatrix();
