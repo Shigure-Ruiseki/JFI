@@ -1,6 +1,6 @@
 # Just For Information (JFI)
 
-**Just For Information (JFI)** is an official integration addon for **Just For Me Until You (JFMUY)**. It expands recipe viewing capabilities by adding recipe categories and support for popular 1.7.10 mods.
+**Just For Information (JFI)** is an integration addon for **Just For Me Until You (JFMUY)**. It expands recipe viewing capabilities by adding recipe categories and support for popular 1.7.10 mods.
 
 ***
 
