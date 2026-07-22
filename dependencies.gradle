@@ -39,6 +39,9 @@ dependencies {
 
     devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.102-GTNH:dev')
     devOnlyNonPublishable("com.github.GTNewHorizons:waila:1.19.30:dev") { transitive = false }
+    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-nihilo-221696:2316201"))
+    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-astris-226340:2239780"))
+    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-compressum-241967:2618788"))
 
     compileOnly(rfg.deobf("com.github.Thorfusion:Mekanism-Community-Edition:9.10.46:DEV"))
     compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.14.96-GTNH:dev")

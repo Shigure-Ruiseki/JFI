@@ -27,7 +27,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class EnchanterRecipeCategory implements IRecipeCategory<EnchanterRecipeWrapper> {
 
-    public static final String UID = "EnderIOEnchanter";
+    public static final String UID = "enderio.enchanter";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();

@@ -30,7 +30,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class SliceAndSpliceRecipeCategory implements IRecipeCategory<SliceAndSpliceRecipeWrapper> {
 
-    public static final String UID = "EnderIOSliceAndSplice";
+    public static final String UID = "enderio.slicensplice";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();

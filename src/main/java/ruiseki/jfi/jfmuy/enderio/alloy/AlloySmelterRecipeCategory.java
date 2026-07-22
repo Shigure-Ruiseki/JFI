@@ -28,7 +28,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class AlloySmelterRecipeCategory implements IRecipeCategory<AlloySmelterRecipeWrapper> {
 
-    public static final String UID = "EnderIOAlloySmelter";
+    public static final String UID = "enderio.alloysmelter";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();

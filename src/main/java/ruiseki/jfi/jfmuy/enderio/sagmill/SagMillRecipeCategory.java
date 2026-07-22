@@ -28,7 +28,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class SagMillRecipeCategory implements IRecipeCategory<SagMillRecipeWrapper> {
 
-    public static final String UID = "EnderIOSagMill";
+    public static final String UID = "enderio.sagmill";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
