@@ -9,11 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.apache.logging.log4j.Level;
+import org.jetbrains.annotations.Nullable;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import mantle.utils.ItemMetaWrapper;
-import org.jetbrains.annotations.Nullable;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
