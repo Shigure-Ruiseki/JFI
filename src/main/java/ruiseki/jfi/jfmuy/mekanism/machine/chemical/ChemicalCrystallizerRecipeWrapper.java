@@ -6,8 +6,7 @@ import ruiseki.jfi.jfmuy.mekanism.machine.MekanismRecipeWrapper;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 
-public class ChemicalCrystallizerRecipeWrapper
-    extends MekanismRecipeWrapper<CrystallizerRecipe> {
+public class ChemicalCrystallizerRecipeWrapper extends MekanismRecipeWrapper<CrystallizerRecipe> {
 
     public ChemicalCrystallizerRecipeWrapper(CrystallizerRecipe recipe) {
         super(recipe);

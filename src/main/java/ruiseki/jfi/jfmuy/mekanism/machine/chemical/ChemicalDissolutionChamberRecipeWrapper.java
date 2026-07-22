@@ -8,8 +8,7 @@ import ruiseki.jfi.jfmuy.mekanism.machine.MekanismRecipeWrapper;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 
-public class ChemicalDissolutionChamberRecipeWrapper
-    extends MekanismRecipeWrapper<DissolutionRecipe> {
+public class ChemicalDissolutionChamberRecipeWrapper extends MekanismRecipeWrapper<DissolutionRecipe> {
 
     public static final int INJECT_USAGE = 100;
 

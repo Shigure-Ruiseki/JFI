@@ -14,8 +14,7 @@ import ruiseki.jfi.jfmuy.mekanism.machine.MekanismRecipeWrapper;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 
-public class MetallurgicInfuserRecipeWrapper
-    extends MekanismRecipeWrapper<MetallurgicInfuserRecipe> {
+public class MetallurgicInfuserRecipeWrapper extends MekanismRecipeWrapper<MetallurgicInfuserRecipe> {
 
     public MetallurgicInfuserRecipeWrapper(MetallurgicInfuserRecipe recipe) {
         super(recipe);

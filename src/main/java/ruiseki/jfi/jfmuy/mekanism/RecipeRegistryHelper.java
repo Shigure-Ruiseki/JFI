@@ -328,12 +328,10 @@ public class RecipeRegistryHelper {
             registry.addRecipeCatalyst(factoryStack, VanillaRecipeCategoryUid.SMELTING);
         }
     }
+
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private static <RECIPE extends MachineRecipe> void addRecipes(
-        IModRegistry registry,
-        Recipe type,
-        IRecipeWrapperFactory<RECIPE> factory
-    ) {
+    private static <RECIPE extends MachineRecipe> void addRecipes(IModRegistry registry, Recipe type,
+        IRecipeWrapperFactory<RECIPE> factory) {
         String recipeCategoryUid = type.getRecipeName();
         Class recipeClass = null;
 
@@ -354,7 +352,8 @@ public class RecipeRegistryHelper {
             registry.handleRecipes(recipeClass, factory, recipeCategoryUid);
 
             List<IRecipeWrapper> wrappers = new ArrayList<>();
-            for (Object recipeObj : type.get().values()) {
+            for (Object recipeObj : type.get()
+                .values()) {
                 if (recipeObj instanceof MachineRecipe) {
                     wrappers.add(factory.getRecipeWrapper((RECIPE) recipeObj));
                 }

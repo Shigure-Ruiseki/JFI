@@ -7,8 +7,7 @@ import ruiseki.jfi.jfmuy.mekanism.MekanismPlugin;
 import ruiseki.jfi.jfmuy.mekanism.machine.MekanismRecipeWrapper;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 
-public class ChemicalInfuserRecipeWrapper
-    extends MekanismRecipeWrapper<ChemicalInfuserRecipe> {
+public class ChemicalInfuserRecipeWrapper extends MekanismRecipeWrapper<ChemicalInfuserRecipe> {
 
     public ChemicalInfuserRecipeWrapper(ChemicalInfuserRecipe recipe) {
         super(recipe);

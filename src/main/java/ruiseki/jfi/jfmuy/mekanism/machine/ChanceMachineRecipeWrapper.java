@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 import javax.annotation.Nonnull;
 
-import mekanism.common.recipe.machines.MachineRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
 import mekanism.common.recipe.machines.ChanceMachineRecipe;
+import mekanism.common.recipe.machines.MachineRecipe;
 import mekanism.common.recipe.outputs.ChanceOutput;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
