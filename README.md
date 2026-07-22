@@ -11,3 +11,4 @@
 *  Thermal Dynamics
 *  Thermal Expansion
 *  Thermal Foundation
+*  Tinker's Construct
