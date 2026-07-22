@@ -31,7 +31,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class SoulBinderRecipeCategory implements IRecipeCategory<SoulBinderRecipeWrapper> {
 
-    public static final String UID = "EnderIOSoulBinder";
+    public static final String UID = "enderio.soulbinder";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();

@@ -31,7 +31,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class VatRecipeCategory implements IRecipeCategory<VatRecipeWrapper> {
 
-    public static final String UID = "EnderIOVat";
+    public static final String UID = "enderio.vat";
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();

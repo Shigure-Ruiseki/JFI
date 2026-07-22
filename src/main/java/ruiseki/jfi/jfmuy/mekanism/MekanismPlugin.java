@@ -48,7 +48,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.okcore.fluid.FluidHelpers;
 
-@JFMUYPlugin("Mekanism")
+@JFMUYPlugin(value = "Mekanism")
 public class MekanismPlugin implements IModPlugin {
 
     public static final IIngredientType<GasStack> TYPE_GAS = () -> GasStack.class;
