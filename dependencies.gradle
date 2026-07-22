@@ -35,17 +35,18 @@
  */
 dependencies {
     implementation("com.github.Shigure-Ruiseki:OKCore:26.07.17.2:dev") { transitive = false }
-    implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.20.4:dev') { transitive = false }
+    implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.21.2:dev') { transitive = false }
 
     devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.102-GTNH:dev')
     devOnlyNonPublishable("com.github.GTNewHorizons:waila:1.19.30:dev") { transitive = false }
-    devOnlyNonPublishable(rfg.deobf("curse.maven:immersive-engineering-231951:2299019"))
 
-    devOnlyNonPublishable('com.github.GTNewHorizons:Botania:1.13.27-GTNH:dev') { transitive = false }
-    devOnlyNonPublishable("com.github.GTNewHorizons:EnderIO:2.10.33:dev")
+    compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.14.96-GTNH:dev")
+    compileOnly('com.github.GTNewHorizons:Botania:1.13.27-GTNH:dev') { transitive = false }
+    compileOnly("com.github.GTNewHorizons:EnderIO:2.10.33:dev")
     compileOnly(rfg.deobf("curse.maven:thermal-foundation-222880:2388752"))
     compileOnly(rfg.deobf("curse.maven:thermal-expansion-69163:2388758"))
     compileOnly(rfg.deobf("curse.maven:thermal-foundation-227443:2388756"))
+    compileOnly(rfg.deobf("curse.maven:immersive-engineering-231951:2299019"))
 
     compileOnly(rfg.deobf("curse.maven:cofh-core-69162:2388750"))
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:GTNHLib:0.11.30:dev")

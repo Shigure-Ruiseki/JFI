@@ -1,7 +1,7 @@
 
 ## Required Dependencies:
 
-*   [JFMUY (>= 26.07.20.2)](https://github.com/Shigure-Ruiseki/JFMUY)
+*   [JFMUY (>= 26.07.21.2)](https://github.com/Shigure-Ruiseki/JFMUY)
 *   [OKCore (>= 26.07.17.2)](https://github.com/Shigure-Ruiseki/OKCore)
 
 ## Features:
