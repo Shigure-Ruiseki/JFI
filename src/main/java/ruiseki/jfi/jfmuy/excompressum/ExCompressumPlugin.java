@@ -1,10 +1,10 @@
 package ruiseki.jfi.jfmuy.excompressum;
 
-import cpw.mods.fml.common.Loader;
 import net.blay09.mods.excompressum.ModBlocks;
 import net.blay09.mods.excompressum.ModItems;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Loader;
 import ruiseki.jfi.jfmuy.excompressum.barrel.BarrelProcessRecipeCategory;
 import ruiseki.jfi.jfmuy.excompressum.composting.CompostingRecipeCategory;
 import ruiseki.jfi.jfmuy.excompressum.hammer.CompressedHammerRecipeCategory;
