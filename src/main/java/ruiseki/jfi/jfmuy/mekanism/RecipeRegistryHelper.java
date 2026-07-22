@@ -362,7 +362,7 @@ public class RecipeRegistryHelper {
 
             registry.addRecipes(wrappers, recipeCategoryUid);
         } else {
-            System.err.println("[JFI Error] Không thể tự động tìm recipeClass cho Recipe: " + recipeCategoryUid);
+            System.err.println("[JFI Error] can't find recipeClass for Recipe: " + recipeCategoryUid);
         }
     }
 

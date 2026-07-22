@@ -19,3 +19,4 @@ This addon integrates seamlessly with **JFMUY** to display custom recipes, machi
 *   **EnderIO** (Alloy Smelter, SAG Mill, VAT, etc.)
 *   **Thermal Series** (Pulverizer, Induction Smelter, Magma Crucible, Fluid Transposer, Cover Crafting, etc.)
 *   **Tinkers' Construct** (Smeltery casting, melting, and tool materials)
+*   **Mekanism** (Crystallizer, Dissolution chamber, Infuser, Oxidizer, Washer, Electrolytic separator, etc.)
