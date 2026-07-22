@@ -1,21 +1,65 @@
 package ruiseki.jfi.jfmuy.enderio.sagmill;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
+import org.apache.logging.log4j.Level;
+
 import crazypants.enderio.EnderIO;
+import crazypants.enderio.machine.crusher.CrusherRecipeManager;
+import crazypants.enderio.machine.recipe.IRecipe;
+import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
+import ruiseki.jfmuy.api.IJFMUYHelpers;
+import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.gui.IDrawable;
 import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.gui.IGuiItemStackGroup;
 import ruiseki.jfmuy.api.gui.IRecipeLayout;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
+import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class SagMillRecipeCategory implements IRecipeCategory<SagMillRecipeWrapper> {
 
     public static final String UID = "EnderIOSagMill";
+
+    public static void register(IRecipeCategoryRegistration registry) {
+        IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+        registry.addRecipeCategories(new SagMillRecipeCategory(guiHelper));
+    }
+
+    public static void initialize(IModRegistry registry) {
+        try {
+            IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+            IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+
+            registry.addRecipes(getRecipes(), UID);
+            registry.addRecipeCatalyst(new ItemStack(EnderIO.blockCrusher), UID);
+        } catch (Throwable t) {
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
+        }
+    }
+
+    public static List<IRecipeWrapper> getRecipes() {
+        List<IRecipeWrapper> recipes = new ArrayList<>();
+
+        for (IRecipe recipe : CrusherRecipeManager.getInstance()
+            .getRecipes()) {
+            if (recipe != null) {
+                recipes.add(new SagMillRecipeWrapper(recipe));
+            }
+        }
+
+        return recipes;
+    }
 
     private final IDrawable background;
     private final IDrawableAnimated progressArrow;

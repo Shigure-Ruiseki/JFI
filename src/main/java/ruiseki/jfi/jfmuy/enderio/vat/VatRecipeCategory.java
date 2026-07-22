@@ -1,13 +1,24 @@
 package ruiseki.jfi.jfmuy.enderio.vat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
+import org.apache.logging.log4j.Level;
+
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.fluid.Fluids;
+import crazypants.enderio.machine.recipe.IRecipe;
+import crazypants.enderio.machine.vat.VatRecipeManager;
+import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
+import ruiseki.jfmuy.api.IJFMUYHelpers;
+import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.gui.IDrawable;
 import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.gui.IGuiFluidStackGroup;
@@ -15,10 +26,44 @@ import ruiseki.jfmuy.api.gui.IGuiItemStackGroup;
 import ruiseki.jfmuy.api.gui.IRecipeLayout;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
+import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 
 public class VatRecipeCategory implements IRecipeCategory<VatRecipeWrapper> {
 
     public static final String UID = "EnderIOVat";
+
+    public static void register(IRecipeCategoryRegistration registry) {
+        IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+        registry.addRecipeCategories(new VatRecipeCategory(guiHelper));
+    }
+
+    public static void initialize(IModRegistry registry) {
+        try {
+            IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+            IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+
+            registry.addRecipes(getRecipes(), UID);
+            registry.addRecipeCatalyst(new ItemStack(EnderIO.blockVat), UID);
+        } catch (Throwable t) {
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
+        }
+    }
+
+    public static List<IRecipeWrapper> getRecipes() {
+        List<IRecipeWrapper> recipes = new ArrayList<>();
+
+        for (IRecipe recipe : VatRecipeManager.getInstance()
+            .getRecipes()) {
+            if (recipe != null) {
+                recipes.add(new VatRecipeWrapper(recipe));
+            }
+        }
+
+        return recipes;
+    }
+
     private final IDrawable background;
     private final IDrawableAnimated progressBar;
 

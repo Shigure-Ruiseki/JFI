@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Level;
 
 import blusunrize.immersiveengineering.api.shader.ShaderRegistry;
 import blusunrize.immersiveengineering.common.IEContent;
-import cofh.lib.util.helpers.StringHelper;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
@@ -26,6 +25,7 @@ import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.okcore.helper.LangHelpers;
 
 public class ShaderBagRecipeCategory implements IRecipeCategory<ShaderBagRecipeWrapper> {
 
@@ -76,7 +76,7 @@ public class ShaderBagRecipeCategory implements IRecipeCategory<ShaderBagRecipeW
         ResourceLocation location = new ResourceLocation("minecraft", "textures/gui/container/crafting_table.png");
 
         this.background = guiHelper.createDrawable(location, 29, 16, width, height);
-        this.localizedName = StringHelper.localize("item.ImmersiveEngineering.shaderBag.name");
+        this.localizedName = LangHelpers.localize("item.ImmersiveEngineering.shaderBag.name");
         this.craftingGridHelper = guiHelper.createCraftingGridHelper(craftInputSlot1, craftOutputSlot);
     }
 
