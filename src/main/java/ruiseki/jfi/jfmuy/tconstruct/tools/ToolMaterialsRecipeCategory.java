@@ -77,7 +77,8 @@ public class ToolMaterialsRecipeCategory implements IRecipeCategory<ToolMaterial
             }
 
             if (!PHConstruct.craftMetalTools) {
-                for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
+                for (CastingRecipe recipe : TConstructRegistry.getTableCasting()
+                    .getCastingRecipes()) {
                     ItemStack castResult = recipe.getResult();
                     if (castResult != null && castResult.getItem() instanceof IToolPart) {
                         if (((IToolPart) castResult.getItem()).getMaterialID(castResult) == matID) {
@@ -92,7 +93,8 @@ public class ToolMaterialsRecipeCategory implements IRecipeCategory<ToolMaterial
                     recipes.add(new ToolMaterialsRecipeWrapper(toolParts, matID));
                 }
 
-                if (TConstructRegistry.getBowMaterial(matID) != null || TConstructRegistry.getArrowMaterial(matID) != null) {
+                if (TConstructRegistry.getBowMaterial(matID) != null
+                    || TConstructRegistry.getArrowMaterial(matID) != null) {
                     recipes.add(new ToolMaterialsRecipeWrapper(toolParts, matID, true));
                 }
             }
