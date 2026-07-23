@@ -74,10 +74,11 @@ public class OreWashingCategory extends MachineRecipeCategory<OreWashingRecipeWr
     public OreWashingCategory(IGuiHelper guiHelper) {
         super(guiHelper, IC2.textureDomain + ":textures/gui/GUIOreWashingPlant.png", 58, 14, 88, 65);
         ResourceLocation guiTexture = new ResourceLocation(IC2.textureDomain + ":textures/gui/GUIOreWashingPlant.png");
-        this.blank = guiHelper.createBlankDrawable(140,  65);
+        this.blank = guiHelper.createBlankDrawable(140, 65);
 
         IDrawableStatic progressStatic = guiHelper.createDrawable(guiTexture, 176, 117, 20, 19);
-        this.progressBar = guiHelper.createAnimatedDrawable(progressStatic, 20, IDrawableAnimated.StartDirection.LEFT, false);
+        this.progressBar = guiHelper
+            .createAnimatedDrawable(progressStatic, 20, IDrawableAnimated.StartDirection.LEFT, false);
 
         this.fluidOverlay = guiHelper.createDrawable(guiTexture, 176, 69, 12, 47);
     }
