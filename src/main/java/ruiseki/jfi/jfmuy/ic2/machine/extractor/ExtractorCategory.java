@@ -1,0 +1,69 @@
+package ruiseki.jfi.jfmuy.ic2.machine.extractor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.logging.log4j.Level;
+
+import ic2.api.recipe.IRecipeInput;
+import ic2.api.recipe.RecipeOutput;
+import ic2.api.recipe.Recipes;
+import ic2.core.IC2;
+import ic2.core.Ic2Items;
+import ic2.core.block.machine.gui.GuiExtractor;
+import ruiseki.jfi.JFI;
+import ruiseki.jfi.jfmuy.ic2.machine.MachineRecipeCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.MachineRecipeWrapper;
+import ruiseki.jfmuy.api.IGuiHelper;
+import ruiseki.jfmuy.api.IJFMUYHelpers;
+import ruiseki.jfmuy.api.IModRegistry;
+import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+
+public class ExtractorCategory extends MachineRecipeCategory<MachineRecipeWrapper> {
+
+    public static final String UID = "ic2.extractor";
+
+    public static void register(IRecipeCategoryRegistration registry) {
+        IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
+        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+        registry.addRecipeCategories(new ExtractorCategory(guiHelper));
+    }
+
+    public static void initialize(IModRegistry registry) {
+        try {
+            registry.addRecipes(getRecipes(), UID);
+            registry.addRecipeClickArea(GuiExtractor.class, 74, 30, 25, 16, UID);
+            registry.addRecipeCatalyst(Ic2Items.extractor, UID);
+        } catch (Throwable t) {
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
+        }
+    }
+
+    public static List<MachineRecipeWrapper> getRecipes() {
+        List<MachineRecipeWrapper> recipes = new ArrayList<>();
+        if (Recipes.extractor != null && Recipes.extractor.getRecipes() != null) {
+            for (Map.Entry<IRecipeInput, RecipeOutput> entry : Recipes.extractor.getRecipes()
+                .entrySet()) {
+                if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().items.isEmpty()) {
+                    recipes.add(new MachineRecipeWrapper(entry.getKey(), entry.getValue()));
+                }
+            }
+        }
+        return recipes;
+    }
+
+    public ExtractorCategory(IGuiHelper guiHelper) {
+        super(guiHelper, IC2.textureDomain + ":textures/gui/GUIExtractor.png");
+    }
+
+    @Override
+    public String getUid() {
+        return UID;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Extractor";
+    }
+}
