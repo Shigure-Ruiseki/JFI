@@ -35,14 +35,15 @@
  */
 dependencies {
     implementation("com.github.Shigure-Ruiseki:OKCore:26.07.17.2:dev") { transitive = false }
-    implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.21.2:dev') { transitive = false }
+    implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.23.0:dev') { transitive = false }
 
+    devOnlyNonPublishable('net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev')
     devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.102-GTNH:dev')
     devOnlyNonPublishable("com.github.GTNewHorizons:waila:1.19.30:dev") { transitive = false }
-    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-nihilo-221696:2316201"))
-    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-astris-226340:2239780"))
-    devOnlyNonPublishable(rfg.deobf("curse.maven:ex-compressum-241967:2618788"))
 
+    compileOnly(rfg.deobf("curse.maven:ex-nihilo-221696:2316201"))
+    compileOnly(rfg.deobf("curse.maven:ex-astris-226340:2239780"))
+    compileOnly(rfg.deobf("curse.maven:ex-compressum-241967:2618788"))
     compileOnly(rfg.deobf("com.github.Thorfusion:Mekanism-Community-Edition:9.10.46:DEV"))
     compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.14.96-GTNH:dev")
     compileOnly('com.github.GTNewHorizons:Botania:1.13.27-GTNH:dev') { transitive = false }
