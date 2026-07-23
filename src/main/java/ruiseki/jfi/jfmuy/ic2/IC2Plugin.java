@@ -10,6 +10,7 @@ import ruiseki.jfi.jfmuy.ic2.machine.macerator.MaceratorCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerCuttingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerExtrudingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerRollingCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.orewashing.OreWashingCategory;
 import ruiseki.jfi.jfmuy.ic2.scrapbox.ScrapboxRecipeCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -32,6 +33,7 @@ public class IC2Plugin implements IModPlugin {
         MetalFormerRollingCategory.register(registry);
         CentrifugeCategory.register(registry);
         BlockCutterCategory.register(registry);
+        OreWashingCategory.register(registry);
     }
 
     @Override
@@ -47,5 +49,6 @@ public class IC2Plugin implements IModPlugin {
         MetalFormerRollingCategory.initialize(registry);
         CentrifugeCategory.initialize(registry);
         BlockCutterCategory.initialize(registry);
+        OreWashingCategory.initialize(registry);
     }
 }

@@ -78,7 +78,8 @@ public class CentrifugeCategory extends MachineRecipeCategory<CentrifugeRecipeWr
             .createAnimatedDrawable(progressStatic, 40, IDrawableAnimated.StartDirection.BOTTOM, false);
 
         IDrawableStatic powerStatic = guiHelper.createDrawable(guiTexture, 176, 0, 14, 14);
-        this.powerIcon = guiHelper.createAnimatedDrawable(powerStatic, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
+        this.powerIcon = guiHelper
+            .createAnimatedDrawable(powerStatic, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
 
         this.heatIcon = guiHelper.createDrawable(guiTexture, 176, 36, 14, 14);
 

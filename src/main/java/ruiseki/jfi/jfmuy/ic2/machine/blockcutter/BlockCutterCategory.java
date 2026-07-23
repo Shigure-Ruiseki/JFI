@@ -72,7 +72,8 @@ public class BlockCutterCategory extends MachineRecipeCategory<BlockCutterRecipe
         ResourceLocation guiTexture = new ResourceLocation(IC2.textureDomain + ":textures/gui/GUIBlockCutter.png");
 
         IDrawableStatic powerStatic = guiHelper.createDrawable(guiTexture, 176, 0, 14, 14);
-        this.powerIcon = guiHelper.createAnimatedDrawable(powerStatic, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
+        this.powerIcon = guiHelper
+            .createAnimatedDrawable(powerStatic, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
     }
 
     @Override

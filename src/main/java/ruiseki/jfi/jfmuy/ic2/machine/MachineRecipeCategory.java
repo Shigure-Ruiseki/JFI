@@ -17,9 +17,9 @@ public abstract class MachineRecipeCategory<T extends MachineRecipeWrapper> impl
     protected static final int INPUT_SLOT = 0;
     protected static final int OUTPUT_SLOT_START = 1;
 
-    private final IDrawableStatic background;
-    private final IDrawableAnimated progressBar;
-    private final IDrawableAnimated energyBar;
+    protected final IDrawableStatic background;
+    protected final IDrawableAnimated progressBar;
+    protected final IDrawableAnimated energyBar;
 
     public MachineRecipeCategory(IGuiHelper guiHelper, String guiTexture) {
         this(guiHelper, guiTexture, 7, 14, 140, 65);
