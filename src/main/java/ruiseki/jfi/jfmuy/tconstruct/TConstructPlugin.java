@@ -10,12 +10,14 @@ import ruiseki.jfi.jfmuy.tconstruct.interpreter.ToolPartSubtypeInterpreter;
 import ruiseki.jfi.jfmuy.tconstruct.interpreter.ToolSubtypeInterpreter;
 import ruiseki.jfi.jfmuy.tconstruct.melting.MeltingRecipeCategory;
 import ruiseki.jfi.jfmuy.tconstruct.tools.ToolMaterialsRecipeCategory;
+import ruiseki.jfi.jfmuy.thermalexpansion.crafting.WorkbenchRecipeTransferHandler;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IToolPart;
@@ -66,5 +68,7 @@ public class TConstructPlugin implements IModPlugin {
         DryingRackRecipeCategory.initialize(registry);
         MeltingRecipeCategory.initialize(registry);
         ToolMaterialsRecipeCategory.initialize(registry);
+
+        registry.getRecipeTransferRegistry().addRecipeTransferHandler(new CraftingStationRecipeTransferInfo());
     }
 }

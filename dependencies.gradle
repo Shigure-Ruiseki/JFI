@@ -48,7 +48,7 @@ dependencies {
     compileOnly(rfg.deobf("curse.maven:ex-astris-226340:2239780"))
     compileOnly(rfg.deobf("curse.maven:ex-compressum-241967:2618788"))
     compileOnly(rfg.deobf("com.github.Thorfusion:Mekanism-Community-Edition:9.10.46:DEV"))
-    compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.14.96-GTNH:dev")
+    devOnlyNonPublishable("com.github.GTNewHorizons:TinkersConstruct:1.14.96-GTNH:dev")
     compileOnly('com.github.GTNewHorizons:Botania:1.13.27-GTNH:dev') { transitive = false }
     compileOnly("com.github.GTNewHorizons:EnderIO:2.10.33:dev")
     compileOnly(rfg.deobf("curse.maven:thermal-foundation-222880:2388752"))
