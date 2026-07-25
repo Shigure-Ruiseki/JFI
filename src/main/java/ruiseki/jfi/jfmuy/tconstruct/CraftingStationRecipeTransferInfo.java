@@ -32,7 +32,8 @@ public class CraftingStationRecipeTransferInfo implements IRecipeTransferInfo<Cr
     @Override
     public List<Slot> getRecipeSlots(CraftingStationContainer container) {
         List<Slot> slots = new ArrayList<>();
-        for(int i = 1; i < 10; i++) {
+        // Slots 1 to 9 correspond to the 3x3 crafting grid
+        for (int i = 1; i <= 9; i++) {
             slots.add(container.getSlot(i));
         }
         return slots;
@@ -43,10 +44,18 @@ public class CraftingStationRecipeTransferInfo implements IRecipeTransferInfo<Cr
     public List<Slot> getInventorySlots(CraftingStationContainer container) {
         List<Slot> slots = new ArrayList<>();
 
-        // skip the actual slots of the crafting table
-        for(int i = 10; i < container.inventorySlots.size(); i++) {
-            slots.add(container.getSlot(i));
+        // Player Inventory (10 to 45) + Attached Chest Slots (46+)
+        for (int i = 10; i < container.inventorySlots.size(); i++) {
+            Slot slot = container.getSlot(i);
+            if (slot != null) {
+                slots.add(slot);
+            }
         }
         return slots;
+    }
+
+    @Override
+    public int getOutputSlot() {
+        return 0;
     }
 }
