@@ -1,13 +1,15 @@
 package ruiseki.jfi.jfmuy.tconstruct;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import net.minecraft.inventory.Slot;
+
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.jfmuy.api.recipe.transfer.IRecipeTransferInfo;
 import tconstruct.tools.inventory.CraftingStationContainer;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CraftingStationRecipeTransferInfo implements IRecipeTransferInfo<CraftingStationContainer> {
 
