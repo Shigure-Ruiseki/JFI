@@ -1,20 +1,21 @@
 package ruiseki.jfi.jfmuy.ic2.machine.solidcanner;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
+
+import org.apache.logging.log4j.Level;
+
 import ic2.api.recipe.ICannerBottleRecipeManager;
-import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import ic2.api.recipe.Recipes;
 import ic2.core.IC2;
 import ic2.core.Ic2Items;
-import ic2.core.block.machine.gui.GuiMacerator;
 import ic2.core.block.machine.gui.GuiSolidCanner;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-import org.apache.logging.log4j.Level;
 import ruiseki.jfi.JFI;
-import ruiseki.jfi.jfmuy.ic2.machine.MachineRecipeWrapper;
-import ruiseki.jfi.jfmuy.ic2.machine.macerator.MaceratorCategory;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -27,10 +28,6 @@ import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 public class SolidCannerRecipeCategory implements IRecipeCategory<SolidCannerRecipeWrapper> {
 
     public static final String UID = "ic2.solidcanner";
@@ -40,6 +37,7 @@ public class SolidCannerRecipeCategory implements IRecipeCategory<SolidCannerRec
         IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
         registry.addRecipeCategories(new SolidCannerRecipeCategory(guiHelper));
     }
+
     public static void initialize(IModRegistry registry) {
         try {
             registry.addRecipes(getRecipes(), UID);
@@ -53,7 +51,8 @@ public class SolidCannerRecipeCategory implements IRecipeCategory<SolidCannerRec
     public static List<SolidCannerRecipeWrapper> getRecipes() {
         List<SolidCannerRecipeWrapper> recipes = new ArrayList<>();
         if (Recipes.cannerBottle != null && Recipes.cannerBottle.getRecipes() != null) {
-            for (Map.Entry<ICannerBottleRecipeManager.Input, RecipeOutput> entry : Recipes.cannerBottle.getRecipes().entrySet()) {
+            for (Map.Entry<ICannerBottleRecipeManager.Input, RecipeOutput> entry : Recipes.cannerBottle.getRecipes()
+                .entrySet()) {
                 ICannerBottleRecipeManager.Input input = entry.getKey();
                 RecipeOutput output = entry.getValue();
                 if (input != null && output != null && !output.items.isEmpty()) {
@@ -73,10 +72,12 @@ public class SolidCannerRecipeCategory implements IRecipeCategory<SolidCannerRec
         this.background = guiHelper.createDrawable(guiTex, 5, 16, 140, 65);
 
         IDrawableStatic progressStatic = guiHelper.createDrawable(guiTex, 176, 14, 25, 16);
-        this.progressBar = guiHelper.createAnimatedDrawable(progressStatic, 200, IDrawableAnimated.StartDirection.LEFT, false);
+        this.progressBar = guiHelper
+            .createAnimatedDrawable(progressStatic, 200, IDrawableAnimated.StartDirection.LEFT, false);
 
         IDrawableStatic cannerStatic = guiHelper.createDrawable(guiTex, 176, 0, 14, 14);
-        this.cannerAnimation = guiHelper.createAnimatedDrawable(cannerStatic, 200, IDrawableAnimated.StartDirection.TOP, false);
+        this.cannerAnimation = guiHelper
+            .createAnimatedDrawable(cannerStatic, 200, IDrawableAnimated.StartDirection.TOP, false);
     }
 
     @Override
@@ -106,7 +107,8 @@ public class SolidCannerRecipeCategory implements IRecipeCategory<SolidCannerRec
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, SolidCannerRecipeWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, SolidCannerRecipeWrapper recipeWrapper,
+        IIngredients ingredients) {
         IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
 
         itemStacks.init(0, true, 61, 19);

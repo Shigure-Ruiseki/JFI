@@ -1,17 +1,23 @@
 package ruiseki.jfi.jfmuy.ic2.machine.blastfurnace;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
+import org.apache.logging.log4j.Level;
+
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import ic2.api.recipe.Recipes;
 import ic2.core.IC2;
 import ic2.core.Ic2Items;
 import ic2.core.block.machine.gui.GuiBlastFurnace;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-import org.apache.logging.log4j.Level;
 import ruiseki.jfi.JFI;
 import ruiseki.jfi.jfmuy.ic2.machine.MachineRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.MachineRecipeWrapper;
@@ -21,10 +27,6 @@ import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.gui.IDrawableAnimated;
 import ruiseki.jfmuy.api.gui.IDrawableStatic;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class BlastFurnaceCategory extends MachineRecipeCategory<MachineRecipeWrapper> {
 
@@ -49,7 +51,8 @@ public class BlastFurnaceCategory extends MachineRecipeCategory<MachineRecipeWra
     public static List<MachineRecipeWrapper> getRecipes() {
         List<MachineRecipeWrapper> recipes = new ArrayList<>();
         if (Recipes.blastfurance != null && Recipes.blastfurance.getRecipes() != null) {
-            for (Map.Entry<IRecipeInput, RecipeOutput> entry : Recipes.blastfurance.getRecipes().entrySet()) {
+            for (Map.Entry<IRecipeInput, RecipeOutput> entry : Recipes.blastfurance.getRecipes()
+                .entrySet()) {
                 if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().items.isEmpty()) {
                     recipes.add(new MachineRecipeWrapper(entry.getKey(), entry.getValue()));
                 }
@@ -69,7 +72,8 @@ public class BlastFurnaceCategory extends MachineRecipeCategory<MachineRecipeWra
         ResourceLocation location = new ResourceLocation(IC2.textureDomain + ":textures/gui/GUIBlastFurnace.png");
 
         IDrawableStatic progressDrawable = guiHelper.createDrawable(location, 176, 51, 27, 27);
-        this.customProgressBar = guiHelper.createAnimatedDrawable(progressDrawable, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
+        this.customProgressBar = guiHelper
+            .createAnimatedDrawable(progressDrawable, 20, IDrawableAnimated.StartDirection.BOTTOM, false);
 
         this.heatIndicator = guiHelper.createDrawable(location, 176, 8, 14, 14);
         this.airBar = guiHelper.createDrawable(location, 176, 0, 23, 8);
@@ -120,7 +124,13 @@ public class BlastFurnaceCategory extends MachineRecipeCategory<MachineRecipeWra
 
         if (Ic2Items.airCell != null) {
             RenderHelper.enableGUIStandardItemLighting();
-            this.itemRenderer.renderItemIntoGUI(minecraft.fontRenderer, minecraft.getTextureManager(), Ic2Items.airCell, 11, 38); // 15 - 15, 38 - 18
+            this.itemRenderer
+                .renderItemIntoGUI(minecraft.fontRenderer, minecraft.getTextureManager(), Ic2Items.airCell, 11, 38); // 15
+                                                                                                                     // -
+                                                                                                                     // 15,
+                                                                                                                     // 38
+                                                                                                                     // -
+                                                                                                                     // 18
             RenderHelper.disableStandardItemLighting();
         }
     }
