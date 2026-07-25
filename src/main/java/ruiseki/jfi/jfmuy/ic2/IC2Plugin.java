@@ -23,7 +23,7 @@ import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 
-@JFMUYPlugin
+@JFMUYPlugin(value = "IC2")
 public class IC2Plugin implements IModPlugin {
 
     @Override
