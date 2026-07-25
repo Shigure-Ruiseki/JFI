@@ -4,3 +4,7 @@ gui.thermalexpansion.jei.transposer.modeFill=Fill
 
 info.cofh.chance=Chance
 info.cofh.energy=Energy
+
+jfi.gui.fuel=Reactor Fuel
+jfi.gui.reactor=Reactor Interior
+jfi.gui.turbine=Turbine Coil
