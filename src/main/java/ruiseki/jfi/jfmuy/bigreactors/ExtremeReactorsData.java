@@ -1,4 +1,4 @@
-package ruiseki.jfi.jfmuy.bigreactors.reactors;
+package ruiseki.jfi.jfmuy.bigreactors;
 
 import java.lang.reflect.Field;
 import java.util.List;
