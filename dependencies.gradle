@@ -37,11 +37,12 @@ dependencies {
     implementation("com.github.Shigure-Ruiseki:OKCore:26.07.17.2:dev") { transitive = false }
     implementation('com.github.Shigure-Ruiseki:JFMUY:26.07.23.0:dev') { transitive = false }
 
-    devOnlyNonPublishable('curse.maven:minefactory-reloaded-66672:2277486')
-    devOnlyNonPublishable(rfg.deobf('curse.maven:big-reactors-241994:2282591'))
+    devOnlyNonPublishable(rfg.deobf('curse.maven:minefactory-reloaded-66672:2277486'))
     devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.102-GTNH:dev')
+    devOnlyNonPublishable('com.github.GTNewHorizons:NEI-Integration:1.5.3:dev')
     devOnlyNonPublishable("com.github.GTNewHorizons:waila:1.19.30:dev") { transitive = false }
 
+    compileOnly(rfg.deobf('curse.maven:big-reactors-241994:2282591'))
     compileOnly('net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev')
     compileOnly(rfg.deobf("curse.maven:ex-nihilo-221696:2316201"))
     compileOnly(rfg.deobf("curse.maven:ex-astris-226340:2239780"))
