@@ -1,15 +1,16 @@
 package ruiseki.jfi.jfmuy.ic2.machine.solidcanner;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.util.StackUtil;
-import net.minecraft.item.ItemStack;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SolidCannerRecipeWrapper implements IRecipeWrapper {
 

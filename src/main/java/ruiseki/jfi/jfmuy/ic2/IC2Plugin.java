@@ -1,5 +1,6 @@
 package ruiseki.jfi.jfmuy.ic2;
 
+import ic2.core.Ic2Items;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvShapelessRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.blastfurnace.BlastFurnaceCategory;
@@ -7,6 +8,8 @@ import ruiseki.jfi.jfmuy.ic2.machine.blockcutter.BlockCutterCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.centrifuge.CentrifugeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.compressor.CompressorCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.extractor.ExtractorCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.fluidcanner.FluidCannerRecipeCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.lathe.LatheRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.macerator.MaceratorCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerCuttingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerExtrudingCategory;
@@ -18,6 +21,7 @@ import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 
 @JFMUYPlugin
 public class IC2Plugin implements IModPlugin {
@@ -38,6 +42,8 @@ public class IC2Plugin implements IModPlugin {
         OreWashingCategory.register(registry);
         SolidCannerRecipeCategory.register(registry);
         BlastFurnaceCategory.register(registry);
+        LatheRecipeCategory.register(registry);
+        FluidCannerRecipeCategory.register(registry);
     }
 
     @Override
@@ -56,5 +62,11 @@ public class IC2Plugin implements IModPlugin {
         OreWashingCategory.initialize(registry);
         SolidCannerRecipeCategory.initialize(registry);
         BlastFurnaceCategory.initialize(registry);
+        LatheRecipeCategory.initialize(registry);
+        FluidCannerRecipeCategory.initialize(registry);
+
+        registry.addRecipeCatalyst(Ic2Items.ironFurnace, VanillaRecipeCategoryUid.SMELTING);
+        registry.addRecipeCatalyst(Ic2Items.electroFurnace, VanillaRecipeCategoryUid.SMELTING);
+        registry.addRecipeCatalyst(Ic2Items.inductionFurnace, VanillaRecipeCategoryUid.SMELTING);
     }
 }
