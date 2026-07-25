@@ -21,3 +21,4 @@ This addon integrates seamlessly with **JFMUY** to display custom recipes, machi
 *   **Tinkers' Construct** (Smeltery casting, melting, and tool materials)
 *   **Mekanism** (Crystallizer, Dissolution chamber, Infuser, Oxidizer, Washer, Electrolytic separator, etc.)
 *   **Ex Nihilo & Ex Compressum** (Composting, Compressed Hammering, Heavy Sieving, Barrel Fluid Transformation, Sifting, Hammering, etc.)
+*   **IC2** (Macerator, Extractor, Compressor, Scrapbox, Metal Former, Centrifuge, BlockCutter, Ore Washing, Solid Canner, Blast Furnace, Lathe, Fluid Canner)
