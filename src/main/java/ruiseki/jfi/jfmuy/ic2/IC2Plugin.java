@@ -2,6 +2,7 @@ package ruiseki.jfi.jfmuy.ic2;
 
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvShapelessRecipeCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.blastfurnace.BlastFurnaceCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.blockcutter.BlockCutterCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.centrifuge.CentrifugeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.compressor.CompressorCategory;
@@ -11,6 +12,7 @@ import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerCuttingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerExtrudingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerRollingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.orewashing.OreWashingCategory;
+import ruiseki.jfi.jfmuy.ic2.machine.solidcanner.SolidCannerRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.scrapbox.ScrapboxRecipeCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -34,6 +36,8 @@ public class IC2Plugin implements IModPlugin {
         CentrifugeCategory.register(registry);
         BlockCutterCategory.register(registry);
         OreWashingCategory.register(registry);
+        SolidCannerRecipeCategory.register(registry);
+        BlastFurnaceCategory.register(registry);
     }
 
     @Override
@@ -50,5 +54,7 @@ public class IC2Plugin implements IModPlugin {
         CentrifugeCategory.initialize(registry);
         BlockCutterCategory.initialize(registry);
         OreWashingCategory.initialize(registry);
+        SolidCannerRecipeCategory.initialize(registry);
+        BlastFurnaceCategory.initialize(registry);
     }
 }
