@@ -76,7 +76,7 @@ public class SludgeBoilerCategory implements IRecipeCategory<SludgeBoilerWrapper
 
             registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(0), 1, 9), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Error loading Sludge Boiler recipes!", t);
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
     }
 

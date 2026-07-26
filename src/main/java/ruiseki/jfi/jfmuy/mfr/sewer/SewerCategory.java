@@ -48,7 +48,7 @@ public class SewerCategory implements IRecipeCategory<SewerWrapper> {
 
             registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(0), 1, 10), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Error loading Sewer recipes!", t);
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
     }
 

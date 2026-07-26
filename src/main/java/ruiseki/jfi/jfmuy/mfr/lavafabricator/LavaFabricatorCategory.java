@@ -47,7 +47,7 @@ public class LavaFabricatorCategory implements IRecipeCategory<LavaFabricatorWra
 
             registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(1), 1, 5), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Error loading Lava Fabricator recipes!", t);
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
     }
 

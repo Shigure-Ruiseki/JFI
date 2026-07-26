@@ -77,7 +77,7 @@ public class MeatPackerCategory implements IRecipeCategory<MeatPackerWrapper> {
 
             registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(0), 1, 14), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Error loading Meat Packer recipes!", t);
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
     }
 
