@@ -30,7 +30,12 @@ public abstract class TrapRecipeCategory implements IRecipeCategory<TrapRecipeWr
 
     public TrapRecipeCategory(IGuiHelper help, String png) {
         this.background = help
-            .drawableBuilder(new ResourceLocation("jfi", "textures/gui/harvestcraft/" + png + "_trap_small.png"), 0, 0, 81, 29)
+            .drawableBuilder(
+                new ResourceLocation("jfi", "textures/gui/harvestcraft/" + png + "_trap_small.png"),
+                0,
+                0,
+                81,
+                29)
             .setTextureSize(81, 29)
             .build();
     }
