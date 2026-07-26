@@ -1,13 +1,10 @@
-package ruiseki.jfi.jfmuy.mfr.harvester;
+package ruiseki.jfi.jfmuy.mfr.lavafabricator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -15,7 +12,7 @@ import org.apache.logging.log4j.Level;
 
 import powercrystals.minefactoryreloaded.MineFactoryReloadedCore;
 import powercrystals.minefactoryreloaded.setup.MFRThings;
-import powercrystals.minefactoryreloaded.tile.machine.TileEntityHarvester;
+import powercrystals.minefactoryreloaded.tile.machine.TileEntityLavaFabricator;
 import ruiseki.jfi.JFI;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IJFMUYHelpers;
@@ -28,53 +25,42 @@ import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.recipe.IRecipeCategory;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 
-public class HarvesterCategory implements IRecipeCategory<HarvesterWrapper> {
+public class LavaFabricatorCategory implements IRecipeCategory<LavaFabricatorWrapper> {
 
-    public static final String UID = "minefactoryreloaded.harvester";
+    public static final String UID = "minefactoryreloaded.lavafabricator";
 
-    public static int sludgePerOperation = 10;
+    public static final int LAVA_PER_OPERATION = 20;
     public static int energyPerOperation;
 
     public static void register(IRecipeCategoryRegistration registry) {
         IJFMUYHelpers jeiHelpers = registry.getJFMUYHelpers();
         IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-        registry.addRecipeCategories(new HarvesterCategory(guiHelper));
+        registry.addRecipeCategories(new LavaFabricatorCategory(guiHelper));
     }
 
     public static void initialize(IModRegistry registry) {
         try {
-            registry.addRecipes(getRecipes(), HarvesterCategory.UID);
-            registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(0), 1, 2), HarvesterCategory.UID);
+            TileEntityLavaFabricator dummy = new TileEntityLavaFabricator();
+            energyPerOperation = dummy.getActivationEnergy();
+
+            registry.addRecipes(Collections.singletonList(new LavaFabricatorWrapper()), UID);
+
+            registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(1), 1, 5), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
+            JFI.okLog(Level.ERROR, "Error loading Lava Fabricator recipes!", t);
         }
     }
 
-    private static List<HarvesterWrapper> getRecipes() {
-        TileEntityHarvester dummy = new TileEntityHarvester();
-        energyPerOperation = dummy.getActivationEnergy() * dummy.getWorkMax();
-
-        List<HarvesterWrapper> recipes = new ArrayList<>();
-        recipes.add(new HarvesterWrapper(sludgePerOperation));
-
-        return recipes;
-    }
-
     private final IDrawable background;
-    private final IDrawable arrowOverlay;
-    private final IDrawable harvestableIconOverlay;
+    private final IDrawable tankOverlay;
     private final IDrawable energyBar;
     private final IDrawable workBar;
 
-    public HarvesterCategory(IGuiHelper guiHelper) {
-        ResourceLocation guiTexture = new ResourceLocation("minefactoryreloaded", "textures/gui/harvester.png");
-        ResourceLocation overlayTexture = new ResourceLocation("jfi", "textures/gui/mfr/overlays.png");
+    public LavaFabricatorCategory(IGuiHelper guiHelper) {
+        ResourceLocation guiTexture = new ResourceLocation("minefactoryreloaded", "textures/gui/lavafabricator.png");
 
         this.background = guiHelper.createDrawable(guiTexture, 11, 13, 160, 65);
-
-        this.arrowOverlay = guiHelper.createDrawable(overlayTexture, 0, 0, 22, 15);
-        this.harvestableIconOverlay = guiHelper.createDrawable(overlayTexture, 0, 48, 16, 16);
-
+        this.tankOverlay = guiHelper.createDrawable(guiTexture, 176, 0, 16, 60);
         this.energyBar = guiHelper.createDrawable(guiTexture, 176, 58, 8, 62);
 
         this.workBar = guiHelper.createAnimatedDrawable(
@@ -91,7 +77,7 @@ public class HarvesterCategory implements IRecipeCategory<HarvesterWrapper> {
 
     @Override
     public String getTitle() {
-        return StatCollector.translateToLocal("tile.mfr.machine.harvester.name");
+        return StatCollector.translateToLocal("tile.mfr.machine.lavafabricator.name");
     }
 
     @Override
@@ -106,30 +92,23 @@ public class HarvesterCategory implements IRecipeCategory<HarvesterWrapper> {
 
     @Override
     public void drawExtras(Minecraft minecraft) {
-        this.harvestableIconOverlay.draw(minecraft, 48, 24);
-        this.arrowOverlay.draw(minecraft, 76, 25);
         this.energyBar.draw(minecraft, 129, 0);
         this.workBar.draw(minecraft, 139, 0);
     }
 
     @Override
     public List<String> getTooltipStrings(int mouseX, int mouseY) {
-        if (mouseX >= 48 && mouseX <= 64 && mouseY >= 24 && mouseY <= 40) {
-            return Arrays.asList(
-                StatCollector.translateToLocal("jfi.mfr.harvester.harvestables"),
-                EnumChatFormatting.GRAY + StatCollector.translateToLocal("jfi.mfr.harvester.harvestables.1"));
-        } else if (mouseX >= 129 && mouseX <= 137 && mouseY >= 0 && mouseY <= 62) {
+        if (mouseX >= 129 && mouseX <= 137 && mouseY >= 0 && mouseY <= 62) {
             return Collections.singletonList(energyPerOperation + " RF");
         }
         return Collections.emptyList();
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, HarvesterWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, LavaFabricatorWrapper recipeWrapper, IIngredients ingredients) {
         IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
 
-        fluidStacks.init(0, false, 111, 2, 16, 60, 4000, true, null);
-
+        fluidStacks.init(0, false, 111, 2, 16, 60, 4000, true, tankOverlay);
         fluidStacks.set(ingredients);
     }
 }

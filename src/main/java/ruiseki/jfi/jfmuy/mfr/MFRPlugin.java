@@ -4,6 +4,12 @@ import ruiseki.jfi.jfmuy.mfr.bioreactor.BioReactorCategory;
 import ruiseki.jfi.jfmuy.mfr.composter.ComposterCategory;
 import ruiseki.jfi.jfmuy.mfr.grinder.GrinderCategory;
 import ruiseki.jfi.jfmuy.mfr.harvester.HarvesterCategory;
+import ruiseki.jfi.jfmuy.mfr.laserdrill.LaserDrillCategory;
+import ruiseki.jfi.jfmuy.mfr.lavafabricator.LavaFabricatorCategory;
+import ruiseki.jfi.jfmuy.mfr.meatpacker.MeatPackerCategory;
+import ruiseki.jfi.jfmuy.mfr.sewer.SewerCategory;
+import ruiseki.jfi.jfmuy.mfr.slaughterhouse.SlaughterhouseCategory;
+import ruiseki.jfi.jfmuy.mfr.sludgeboiler.SludgeBoilerCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
@@ -18,6 +24,12 @@ public class MFRPlugin implements IModPlugin {
         ComposterCategory.register(registry);
         GrinderCategory.register(registry);
         HarvesterCategory.register(registry);
+        LaserDrillCategory.register(registry);
+        LavaFabricatorCategory.register(registry);
+        MeatPackerCategory.register(registry);
+        SewerCategory.register(registry);
+        SlaughterhouseCategory.register(registry);
+        SludgeBoilerCategory.register(registry);
     }
 
     @Override
@@ -26,5 +38,11 @@ public class MFRPlugin implements IModPlugin {
         ComposterCategory.initialize(registry);
         GrinderCategory.initialize(registry);
         HarvesterCategory.initialize(registry);
+        LaserDrillCategory.initialize(registry);
+        LavaFabricatorCategory.initialize(registry);
+        MeatPackerCategory.initialize(registry);
+        SewerCategory.initialize(registry);
+        SlaughterhouseCategory.initialize(registry);
+        SludgeBoilerCategory.initialize(registry);
     }
 }
