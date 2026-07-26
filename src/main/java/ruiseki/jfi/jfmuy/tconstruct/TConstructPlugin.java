@@ -1,6 +1,7 @@
 package ruiseki.jfi.jfmuy.tconstruct;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import ruiseki.jfi.jfmuy.tconstruct.alloying.AlloyingRecipeCategory;
 import ruiseki.jfi.jfmuy.tconstruct.casting.CastingRecipeCategory;
@@ -16,6 +17,7 @@ import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IToolPart;
@@ -66,5 +68,9 @@ public class TConstructPlugin implements IModPlugin {
         DryingRackRecipeCategory.initialize(registry);
         MeltingRecipeCategory.initialize(registry);
         ToolMaterialsRecipeCategory.initialize(registry);
+
+        registry.addRecipeCatalyst(new ItemStack(TinkerTools.craftingStationWood), VanillaRecipeCategoryUid.CRAFTING);
+        registry.getRecipeTransferRegistry()
+            .addRecipeTransferHandler(new CraftingStationRecipeTransferInfo());
     }
 }

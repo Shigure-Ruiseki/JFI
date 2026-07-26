@@ -1,5 +1,6 @@
 package ruiseki.jfi.jfmuy.ic2;
 
+import cpw.mods.fml.common.Loader;
 import ic2.core.Ic2Items;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvShapelessRecipeCategory;
@@ -28,6 +29,7 @@ public class IC2Plugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
+        if (Loader.isModLoaded("jfic2c")) return;
         AdvRecipeCategory.register(registry);
         AdvShapelessRecipeCategory.register(registry);
         MaceratorCategory.register(registry);
@@ -48,6 +50,7 @@ public class IC2Plugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
+        if (Loader.isModLoaded("jfic2c")) return;
         AdvRecipeCategory.initialize(registry);
         AdvShapelessRecipeCategory.initialize(registry);
         MaceratorCategory.initialize(registry);

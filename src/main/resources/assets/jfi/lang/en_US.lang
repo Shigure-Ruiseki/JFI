@@ -8,3 +8,21 @@ info.cofh.energy=Energy
 jfi.gui.fuel=Reactor Fuel
 jfi.gui.reactor=Reactor Interior
 jfi.gui.turbine=Turbine Coil
+
+# MineFactory Reloaded
+jfi.mfr.bioreactor.efficiency=Efficiency
+jfi.mfr.bioreactor.efficiency.1=Depends of the amount of
+jfi.mfr.bioreactor.efficiency.2=different items being processed.
+jfi.mfr.bioreactor.efficiency.3=More efficiency means more BioFuel.
+jfi.mfr.grinder.mobs=Mobs
+jfi.mfr.grinder.mobs.1=Mobs that drop more XP
+jfi.mfr.grinder.mobs.2=produce more Essence.
+jfi.mfr.harvester.harvestables=Harvestable blocks
+jfi.mfr.harvester.harvestables.1=Sludge is a byproduct of harvesting.
+jfi.mfr.laserdrill.focus=Focus
+jfi.mfr.sewer.animals=Animals or villagers
+jfi.mfr.sewer.animals.1=Larger animals produce more sewage.
+jfi.mfr.sewer.xp=Experience Orbs
+jfi.mfr.sewer.xp.1=XP gets converted into Essence.
+jfi.mfr.slaughterhouse.animals=Animals
+jfi.mfr.slaughterhouse.animals.1=Larger animals produce more meat.
