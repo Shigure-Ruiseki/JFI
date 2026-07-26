@@ -53,7 +53,7 @@ public class SlaughterhouseCategory implements IRecipeCategory<SlaughterhouseWra
 
             registry.addRecipeCatalyst(new ItemStack(MFRThings.machineBlocks.get(1), 1, 13), UID);
         } catch (Throwable t) {
-            JFI.okLog(Level.ERROR, "Error loading Slaughterhouse recipes!", t);
+            JFI.okLog(Level.ERROR, "Bad/null recipe!", t);
         }
     }
 
