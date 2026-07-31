@@ -6,7 +6,7 @@ public class Reference {
     public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:jfmuy@[26.07.21.1,);"
-        + "required-after:okcore@[26.07.17.2,);"
+        + "required-after:okcore;"
         + "after:BigReactors;"
         + "after:Botania;"
         + "after:EnderIO;"

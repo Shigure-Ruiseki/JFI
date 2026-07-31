@@ -31,7 +31,6 @@ public class JFI extends ModBase {
 
     public JFI() {
         super(Reference.MOD_ID, Reference.MOD_NAME);
-
     }
 
     @Override

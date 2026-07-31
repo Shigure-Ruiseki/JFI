@@ -6,8 +6,8 @@
 
 ## Requirements
 
-*   [JFMUY (>= 26.07.21.2)](https://github.com/Shigure-Ruiseki/JFMUY)
-*   [OKCore (>= 26.07.17.2)](https://github.com/Shigure-Ruiseki/OKCore)
+*   [JFMUY (>= 26.07.31.0)](https://github.com/Shigure-Ruiseki/JFMUY)
+*   [OKCore (>= 26.07.31.0)](https://github.com/Shigure-Ruiseki/OKCore)
 
 ***
 
