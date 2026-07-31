@@ -7,6 +7,6 @@ public class CommonProxy extends CommonProxyComponent {
 
     @Override
     public ModBase getMod() {
-        return JFI.instance;
+        return JFI._instance;
     }
 }

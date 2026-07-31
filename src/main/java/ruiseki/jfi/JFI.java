@@ -19,15 +19,15 @@ import ruiseki.okcore.proxy.ICommonProxy;
 @Mod(
     modid = Reference.MOD_ID,
     name = Reference.MOD_NAME,
-    version = Reference.VERSION,
-    dependencies = Reference.DEPENDENCIES)
+    version = Reference.MOD_VERSION,
+    dependencies = Reference.MOD_DEPENDENCIES)
 public class JFI extends ModBase {
 
     @SidedProxy(serverSide = Reference.PROXY_COMMON, clientSide = Reference.PROXY_CLIENT)
     public static ICommonProxy proxy;
 
     @Mod.Instance(Reference.MOD_ID)
-    public static JFI instance;
+    public static JFI _instance;
 
     public JFI() {
         super(Reference.MOD_ID, Reference.MOD_NAME);
@@ -91,7 +91,7 @@ public class JFI extends ModBase {
      * @param message The message to show.
      */
     public static void okLog(String message) {
-        JFI.instance.log(Level.INFO, message);
+        JFI._instance.log(Level.INFO, message);
     }
 
     /**
@@ -101,7 +101,7 @@ public class JFI extends ModBase {
      * @param message The message to show.
      */
     public static void okLog(Level level, String message) {
-        JFI.instance.log(level, message);
+        JFI._instance.log(level, message);
     }
 
     /**
@@ -112,6 +112,6 @@ public class JFI extends ModBase {
      * @param params  Parameters to replace in the message.
      */
     public static void okLog(Level level, String message, Object... params) {
-        JFI.instance.log(level, message, params);
+        JFI._instance.log(level, message, params);
     }
 }

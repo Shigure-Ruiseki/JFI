@@ -11,6 +11,6 @@ public class ClientProxy extends ClientProxyComponent {
 
     @Override
     public ModBase getMod() {
-        return JFI.instance;
+        return JFI._instance;
     }
 }
