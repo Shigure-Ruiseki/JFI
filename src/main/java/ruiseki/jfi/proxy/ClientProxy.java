@@ -1,5 +1,6 @@
-package ruiseki.jfi;
+package ruiseki.jfi.proxy;
 
+import ruiseki.jfi.JFI;
 import ruiseki.okcore.init.ModBase;
 import ruiseki.okcore.proxy.ClientProxyComponent;
 
