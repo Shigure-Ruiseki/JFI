@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import codechicken.nei.NEIClientConfig;
+import codechicken.nei.api.API;
 import codechicken.nei.recipe.GuiCraftingRecipe;
 import codechicken.nei.recipe.GuiUsageRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler;
@@ -25,6 +26,7 @@ public class NEIPlugin implements IModPlugin {
         if (isNEILoaded) return;
         try {
             NEIClientConfig.bootNEI();
+            API.registerNEIGuiHandler(new NEIScreenHandler());
         } catch (Throwable ignored) {}
         isNEILoaded = true;
     }
