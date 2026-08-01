@@ -2,6 +2,22 @@ package ruiseki.jfi.jfmuy.ic2;
 
 import cpw.mods.fml.common.Loader;
 import ic2.core.Ic2Items;
+import ic2.neiIntegration.core.recipehandler.AdvRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.AdvShapelessRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.BlastFurnaceRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.BlockCutterRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.CentrifugeRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.CompressorRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.ExtractorRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.FluidCannerRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.LatheRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.MaceratorRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.MetalFormerRecipeHandlerCutting;
+import ic2.neiIntegration.core.recipehandler.MetalFormerRecipeHandlerExtruding;
+import ic2.neiIntegration.core.recipehandler.MetalFormerRecipeHandlerRolling;
+import ic2.neiIntegration.core.recipehandler.OreWashingRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.ScrapboxRecipeHandler;
+import ic2.neiIntegration.core.recipehandler.SolidCannerRecipeHandler;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.crafting.AdvShapelessRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.blastfurnace.BlastFurnaceCategory;
@@ -18,14 +34,40 @@ import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerRollingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.orewashing.OreWashingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.solidcanner.SolidCannerRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.scrapbox.ScrapboxRecipeCategory;
+import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
+import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 
 @JFMUYPlugin(value = "IC2")
 public class IC2Plugin implements IModPlugin {
+
+    @Override
+    public void registerSubtypes(ISubtypeRegistry subtypeRegistry) {
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            try {
+                RecipeHarvester.addBlacklistedClass(AdvRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(AdvShapelessRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(MaceratorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ExtractorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(CompressorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ScrapboxRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(MetalFormerRecipeHandlerExtruding.class);
+                RecipeHarvester.addBlacklistedClass(MetalFormerRecipeHandlerCutting.class);
+                RecipeHarvester.addBlacklistedClass(MetalFormerRecipeHandlerRolling.class);
+                RecipeHarvester.addBlacklistedClass(CentrifugeRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(BlockCutterRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(OreWashingRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(SolidCannerRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(BlastFurnaceRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(LatheRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(FluidCannerRecipeHandler.class);
+            } catch (Throwable ignore) {}
+        }
+    }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

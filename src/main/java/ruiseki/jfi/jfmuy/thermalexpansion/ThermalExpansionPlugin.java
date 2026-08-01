@@ -8,6 +8,19 @@ import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
 import cofh.lib.render.RenderHelper;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerCharger;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerCraftingMachine;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerCraftingSecure;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerCraftingUpgrade;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerCrucible;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerFurnace;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerInsolator;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerPulverizer;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerSawmill;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerSmelter;
+import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerTransposer;
+import cpw.mods.fml.common.Loader;
+import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.WorkbenchRecipeTransferHandler;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.machine.CraftingMachineRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.secure.CraftingSecureRecipeCategory;
@@ -27,6 +40,7 @@ import ruiseki.jfi.jfmuy.thermalexpansion.machine.smelter.SmelterRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.machine.transposer.TransposerRecipeCategory;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
+import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
@@ -34,6 +48,25 @@ import ruiseki.okcore.client.renderer.GlStateManager;
 
 @JFMUYPlugin("ThermalExpansion")
 public class ThermalExpansionPlugin implements IModPlugin {
+
+    @Override
+    public void registerSubtypes(ISubtypeRegistry subtypeRegistry) {
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            try {
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerCraftingMachine.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerCraftingUpgrade.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerCraftingSecure.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerFurnace.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerPulverizer.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerSawmill.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerSmelter.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerCrucible.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerTransposer.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerInsolator.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerCharger.class);
+            } catch (Throwable ignore) {}
+        }
+    }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

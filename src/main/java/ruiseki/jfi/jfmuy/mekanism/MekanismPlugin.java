@@ -7,10 +7,31 @@ import java.util.stream.Collectors;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Loader;
 import mekanism.api.gas.Gas;
 import mekanism.api.gas.GasRegistry;
 import mekanism.api.gas.GasStack;
 import mekanism.client.gui.element.GuiProgress.ProgressBar;
+import mekanism.client.nei.ChemicalCrystallizerRecipeHandler;
+import mekanism.client.nei.ChemicalDissolutionChamberRecipeHandler;
+import mekanism.client.nei.ChemicalInfuserRecipeHandler;
+import mekanism.client.nei.ChemicalInjectionChamberRecipeHandler;
+import mekanism.client.nei.ChemicalOxidizerRecipeHandler;
+import mekanism.client.nei.ChemicalWasherRecipeHandler;
+import mekanism.client.nei.CombinerRecipeHandler;
+import mekanism.client.nei.CrusherRecipeHandler;
+import mekanism.client.nei.ElectrolyticSeparatorRecipeHandler;
+import mekanism.client.nei.EnrichmentChamberRecipeHandler;
+import mekanism.client.nei.MetallurgicInfuserRecipeHandler;
+import mekanism.client.nei.OsmiumCompressorRecipeHandler;
+import mekanism.client.nei.PRCRecipeHandler;
+import mekanism.client.nei.PrecisionSawmillRecipeHandler;
+import mekanism.client.nei.PurificationChamberRecipeHandler;
+import mekanism.client.nei.RotaryCondensentratorRecipeHandler;
+import mekanism.client.nei.ShapedMekanismRecipeHandler;
+import mekanism.client.nei.ShapelessMekanismRecipeHandler;
+import mekanism.client.nei.SolarNeutronRecipeHandler;
+import mekanism.client.nei.ThermalEvaporationRecipeHandler;
 import mekanism.common.MekanismBlocks;
 import mekanism.common.MekanismItems;
 import mekanism.common.base.IFactory;
@@ -20,6 +41,10 @@ import mekanism.common.inventory.container.ContainerRobitInventory;
 import mekanism.common.item.ItemBlockEnergyCube;
 import mekanism.common.item.ItemBlockGasTank;
 import mekanism.common.recipe.RecipeHandler.Recipe;
+import mekanism.common.recipe.ShapedMekanismRecipe;
+import mekanism.common.recipe.ShapelessMekanismRecipe;
+import ruiseki.jfi.jfmuy.mekanism.crafting.ShapedMekanismRecipeWrapper;
+import ruiseki.jfi.jfmuy.mekanism.crafting.ShapelessMekanismRecipeWrapper;
 import ruiseki.jfi.jfmuy.mekanism.gas.GasStackHelper;
 import ruiseki.jfi.jfmuy.mekanism.gas.GasStackRenderer;
 import ruiseki.jfi.jfmuy.mekanism.machine.AdvancedMachineRecipeCategory;
@@ -36,6 +61,7 @@ import ruiseki.jfi.jfmuy.mekanism.machine.other.PRCRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.RotaryCondensentratorRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.SolarNeutronRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.ThermalEvaporationRecipeCategory;
+import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -91,6 +117,31 @@ public class MekanismPlugin implements IModPlugin {
 
     @Override
     public void registerSubtypes(ISubtypeRegistry registry) {
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            try {
+                RecipeHarvester.addBlacklistedClass(EnrichmentChamberRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(OsmiumCompressorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(CrusherRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(CombinerRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(MetallurgicInfuserRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(PurificationChamberRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalInjectionChamberRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalOxidizerRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalInfuserRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(RotaryCondensentratorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ElectrolyticSeparatorRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(PrecisionSawmillRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ThermalEvaporationRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalDissolutionChamberRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalWasherRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ChemicalCrystallizerRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(PRCRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(SolarNeutronRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ShapedMekanismRecipeHandler.class);
+                RecipeHarvester.addBlacklistedClass(ShapelessMekanismRecipeHandler.class);
+            } catch (Throwable ignore) {}
+        }
+
         registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.EnergyCube), NBT_INTERPRETER);
         registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock), NBT_INTERPRETER);
         registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock2), NBT_INTERPRETER);
@@ -234,6 +285,16 @@ public class MekanismPlugin implements IModPlugin {
             .getIngredientBlacklist();
         ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismItems.ItemProxy));
         ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismBlocks.BoundingBlock));
+
+        registry.handleRecipes(
+            ShapedMekanismRecipe.class,
+            ShapedMekanismRecipeWrapper::new,
+            VanillaRecipeCategoryUid.CRAFTING);
+
+        registry.handleRecipes(
+            ShapelessMekanismRecipe.class,
+            ShapelessMekanismRecipeWrapper::new,
+            VanillaRecipeCategoryUid.CRAFTING);
 
         // Register the recipes and their catalysts if enabled
         RecipeRegistryHelper.registerEnrichmentChamber(registry);
