@@ -115,6 +115,19 @@ public class NEITemplateCategory implements IRecipeCategory<NEITemplateWrapper> 
     private List<ItemStack> extractStacks(PositionedStack pStack) {
         if (pStack == null) return Collections.emptyList();
 
+        pStack.generatePermutations();
+
+        List<ItemStack> filtered = pStack.getFilteredPermutations();
+        if (filtered != null && !filtered.isEmpty()) {
+            List<ItemStack> list = new ArrayList<>(filtered.size());
+            for (ItemStack is : filtered) {
+                if (is != null) {
+                    list.add(is.copy());
+                }
+            }
+            return list;
+        }
+
         if (pStack.items != null && pStack.items.length > 0) {
             List<ItemStack> list = new ArrayList<>(pStack.items.length);
             for (ItemStack is : pStack.items) {
@@ -126,6 +139,7 @@ public class NEITemplateCategory implements IRecipeCategory<NEITemplateWrapper> 
         } else if (pStack.item != null) {
             return Collections.singletonList(pStack.item.copy());
         }
+
         return Collections.emptyList();
     }
 }

@@ -6,7 +6,7 @@
 		"description": "",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
-		"url": "https://github.com/Shigure-Ruiseki/JRI",
+		"url": "https://github.com/Shigure-Ruiseki/JFI",
 		"updateUrl": "",
 		"authorList": ["Shiruge Ruiseki"],
 		"credits": "",
