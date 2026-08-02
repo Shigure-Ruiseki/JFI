@@ -13,6 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.jetbrains.annotations.NotNull;
 
+import cpw.mods.fml.common.Loader;
 import ruiseki.jfi.jfmuy.botania.brewery.BreweryRecipeCategory;
 import ruiseki.jfi.jfmuy.botania.brewery.BreweryRecipeWrapper;
 import ruiseki.jfi.jfmuy.botania.brewery.BrewerySubtype;
@@ -50,6 +51,7 @@ import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.jfmuy.ingredients.group.CollapsibleGroupRegistry;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipeBrew;
 import vazkii.botania.api.recipe.RecipeElvenTrade;
@@ -58,6 +60,14 @@ import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.recipe.RecipePureDaisy;
 import vazkii.botania.api.recipe.RecipeRuneAltar;
 import vazkii.botania.client.gui.crafting.ContainerCraftingHalo;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerBrewery;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerElvenTrade;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerFloatingFlowers;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerLexicaBotania;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerManaPool;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerPetalApothecary;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerPureDaisy;
+import vazkii.botania.client.integration.nei.recipe.RecipeHandlerRunicAltar;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.crafting.recipe.AncientWillRecipe;
 import vazkii.botania.common.crafting.recipe.CompositeLensRecipe;
@@ -72,6 +82,19 @@ public class BotaniaPlugin implements IModPlugin {
 
     @Override
     public void registerSubtypes(@NotNull ISubtypeRegistry subtypeRegistry) {
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            try {
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerFloatingFlowers.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerPetalApothecary.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerRunicAltar.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerManaPool.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerElvenTrade.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerBrewery.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerPureDaisy.class);
+                RecipeHarvester.addBlacklistedClass(RecipeHandlerLexicaBotania.class);
+            } catch (Throwable ignore) {}
+        }
+
         subtypeRegistry.registerSubtypeInterpreter(
             Item.getItemFromBlock(ModBlocks.specialFlower),
             ItemBlockSpecialFlower::getType);

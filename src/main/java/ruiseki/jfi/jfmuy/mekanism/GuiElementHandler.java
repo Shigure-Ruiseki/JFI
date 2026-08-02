@@ -23,8 +23,7 @@ public class GuiElementHandler implements IAdvancedGuiHandler {
     @Override
     @Nullable
     public List<Rectangle> getGuiExtraAreas(GuiContainer gui) {
-        if (gui instanceof GuiMekanism) {
-            GuiMekanism guiMek = (GuiMekanism) gui;
+        if (gui instanceof GuiMekanism guiMek) {
             List<Rectangle> extraAreas = new ArrayList<>();
 
             int guiWidth = guiMek.getXPos();

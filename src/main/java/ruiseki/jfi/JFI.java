@@ -13,15 +13,17 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
-import ruiseki.okcore.init.ModBase;
+import ruiseki.okcore.config.ConfigHandler;
+import ruiseki.okcore.init.ModBaseVersionable;
 import ruiseki.okcore.proxy.ICommonProxy;
 
 @Mod(
     modid = Reference.MOD_ID,
     name = Reference.MOD_NAME,
     version = Reference.MOD_VERSION,
-    dependencies = Reference.MOD_DEPENDENCIES)
-public class JFI extends ModBase {
+    dependencies = Reference.MOD_DEPENDENCIES,
+    guiFactory = Reference.GUI_FACTORY)
+public class JFI extends ModBaseVersionable {
 
     @SidedProxy(serverSide = Reference.PROXY_COMMON, clientSide = Reference.PROXY_CLIENT)
     public static ICommonProxy proxy;
@@ -30,7 +32,7 @@ public class JFI extends ModBase {
     public static JFI _instance;
 
     public JFI() {
-        super(Reference.MOD_ID, Reference.MOD_NAME);
+        super(Reference.MOD_ID, Reference.MOD_NAME, Reference.MOD_ID);
     }
 
     @Override
@@ -78,6 +80,11 @@ public class JFI extends ModBase {
     @Override
     public CreativeTabs constructDefaultCreativeTab() {
         return null;
+    }
+
+    @Override
+    public void onGeneralConfigsRegister(ConfigHandler configHandler) {
+        configHandler.add(new GeneralConfig());
     }
 
     @Override
