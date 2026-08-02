@@ -1,6 +1,7 @@
 package ruiseki.jfi.jfmuy.ae2;
 
 import java.awt.Rectangle;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,7 +100,7 @@ public class AE2GuiHandler implements IAdvancedGuiHandler<AEBaseGui> {
         Class<?> clazz = target.getClass();
         while (clazz != null && clazz != Object.class) {
             try {
-                java.lang.reflect.Field field = clazz.getDeclaredField(fieldName);
+                Field field = clazz.getDeclaredField(fieldName);
                 field.setAccessible(true);
                 return field.get(target);
             } catch (NoSuchFieldException e) {

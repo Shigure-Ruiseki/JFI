@@ -35,7 +35,7 @@
  */
 dependencies {
     implementation("com.github.Shigure-Ruiseki:OKCore:26.08.01.0:dev") { transitive = false }
-    implementation('com.github.Shigure-Ruiseki:JFMUY:49c105a4aa:dev') { transitive = false }
+    implementation('com.github.Shigure-Ruiseki:JFMUY:26.08.02.0:dev') { transitive = false }
 
     devOnlyNonPublishable('com.github.GTNewHorizons:Railcraft:9.17.26:dev') {transitive = false}
     devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.102-GTNH:dev')
