@@ -61,7 +61,6 @@ import ruiseki.jfi.jfmuy.mekanism.machine.other.PRCRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.RotaryCondensentratorRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.SolarNeutronRecipeCategory;
 import ruiseki.jfi.jfmuy.mekanism.machine.other.ThermalEvaporationRecipeCategory;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IGuiHelper;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
@@ -72,6 +71,7 @@ import ruiseki.jfmuy.api.ingredients.IModIngredientRegistration;
 import ruiseki.jfmuy.api.recipe.IIngredientType;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 import ruiseki.okcore.fluid.FluidHelpers;
 
 @JFMUYPlugin(value = "Mekanism")

@@ -34,19 +34,20 @@ import ruiseki.jfi.jfmuy.ic2.machine.metalformer.MetalFormerRollingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.orewashing.OreWashingCategory;
 import ruiseki.jfi.jfmuy.ic2.machine.solidcanner.SolidCannerRecipeCategory;
 import ruiseki.jfi.jfmuy.ic2.scrapbox.ScrapboxRecipeCategory;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 
 @JFMUYPlugin(value = "IC2")
 public class IC2Plugin implements IModPlugin {
 
     @Override
     public void registerSubtypes(ISubtypeRegistry subtypeRegistry) {
+        if (Loader.isModLoaded("jfic2c")) return;
         if (Loader.isModLoaded("NotEnoughItems")) {
             try {
                 RecipeHarvester.addBlacklistedClass(AdvRecipeHandler.class);

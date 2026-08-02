@@ -20,7 +20,6 @@ import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerSawmill;
 import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerSmelter;
 import cofh.thermalexpansion.plugins.nei.handlers.RecipeHandlerTransposer;
 import cpw.mods.fml.common.Loader;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.WorkbenchRecipeTransferHandler;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.machine.CraftingMachineRecipeCategory;
 import ruiseki.jfi.jfmuy.thermalexpansion.crafting.secure.CraftingSecureRecipeCategory;
@@ -44,6 +43,7 @@ import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 import ruiseki.okcore.client.renderer.GlStateManager;
 
 @JFMUYPlugin("ThermalExpansion")

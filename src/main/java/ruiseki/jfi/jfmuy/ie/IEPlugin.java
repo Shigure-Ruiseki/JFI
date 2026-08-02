@@ -22,12 +22,12 @@ import ruiseki.jfi.jfmuy.ie.metalpress.MetalPressRecipeCategory;
 import ruiseki.jfi.jfmuy.ie.refinery.RefineryRecipeCategory;
 import ruiseki.jfi.jfmuy.ie.shaderbag.ShaderBagRecipeCategory;
 import ruiseki.jfi.jfmuy.ie.squeezer.SqueezerRecipeCategory;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 
 @JFMUYPlugin(value = "ImmersiveEngineering")
 public class IEPlugin implements IModPlugin {

@@ -5,12 +5,12 @@ import exnihilo.compatibility.nei.RecipeHandlerHammer;
 import exnihilo.compatibility.nei.RecipeHandlerSieve;
 import ruiseki.jfi.jfmuy.exnihilo.hammer.HammerRecipeCategory;
 import ruiseki.jfi.jfmuy.exnihilo.sieve.SieveRecipeCategory;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfmuy.api.IModPlugin;
 import ruiseki.jfmuy.api.IModRegistry;
 import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 
 @JFMUYPlugin(value = "exnihilo")
 public class ExNihiloPlugin implements IModPlugin {

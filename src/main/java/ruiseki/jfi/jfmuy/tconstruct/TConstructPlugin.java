@@ -4,7 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.Loader;
-import ruiseki.jfi.jfmuy.nei.RecipeHarvester;
 import ruiseki.jfi.jfmuy.tconstruct.alloying.AlloyingRecipeCategory;
 import ruiseki.jfi.jfmuy.tconstruct.casting.CastingRecipeCategory;
 import ruiseki.jfi.jfmuy.tconstruct.dryingrack.DryingRackRecipeCategory;
@@ -20,6 +19,7 @@ import ruiseki.jfmuy.api.ISubtypeRegistry;
 import ruiseki.jfmuy.api.JFMUYPlugin;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
+import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IToolPart;
