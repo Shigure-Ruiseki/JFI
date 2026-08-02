@@ -57,7 +57,7 @@ public class CraftingStationRecipeTransferInfo implements IRecipeTransferInfo<Cr
     }
 
     @Override
-    public int getOutputSlot() {
+    public int getOutputSlot(CraftingStationContainer container) {
         return 0;
     }
 }
