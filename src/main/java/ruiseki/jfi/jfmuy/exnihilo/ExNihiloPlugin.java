@@ -27,13 +27,17 @@ public class ExNihiloPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        HammerRecipeCategory.register(registry);
-        SieveRecipeCategory.register(registry);
+        try {
+            HammerRecipeCategory.register(registry);
+            SieveRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        HammerRecipeCategory.initialize(registry);
-        SieveRecipeCategory.initialize(registry);
+        try {
+            HammerRecipeCategory.initialize(registry);
+            SieveRecipeCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }

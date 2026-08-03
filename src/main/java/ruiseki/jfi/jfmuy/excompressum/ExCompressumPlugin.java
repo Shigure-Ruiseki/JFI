@@ -39,24 +39,28 @@ public class ExCompressumPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        BarrelProcessRecipeCategory.register(registry);
-        CompostingRecipeCategory.register(registry);
-        CompressedHammerRecipeCategory.register(registry);
-        HeavySieveRecipeCategory.register(registry);
+        try {
+            BarrelProcessRecipeCategory.register(registry);
+            CompostingRecipeCategory.register(registry);
+            CompressedHammerRecipeCategory.register(registry);
+            HeavySieveRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        registry.addRecipeCatalyst(new ItemStack(ModItems.chickenStick), HammerRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ModItems.oreSmasher), HammerRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.autoHammer), HammerRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.autoSieve), SieveRecipeCategory.UID);
-        if (Loader.isModLoaded("Botania")) {
-            registry.addRecipeCatalyst(new ItemStack(ModBlocks.manaSieve), SieveRecipeCategory.UID);
-        }
-        BarrelProcessRecipeCategory.initialize(registry);
-        CompostingRecipeCategory.initialize(registry);
-        CompressedHammerRecipeCategory.initialize(registry);
-        HeavySieveRecipeCategory.initialize(registry);
+        try {
+            registry.addRecipeCatalyst(new ItemStack(ModItems.chickenStick), HammerRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ModItems.oreSmasher), HammerRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ModBlocks.autoHammer), HammerRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ModBlocks.autoSieve), SieveRecipeCategory.UID);
+            if (Loader.isModLoaded("Botania")) {
+                registry.addRecipeCatalyst(new ItemStack(ModBlocks.manaSieve), SieveRecipeCategory.UID);
+            }
+            BarrelProcessRecipeCategory.initialize(registry);
+            CompostingRecipeCategory.initialize(registry);
+            CompressedHammerRecipeCategory.initialize(registry);
+            HeavySieveRecipeCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }

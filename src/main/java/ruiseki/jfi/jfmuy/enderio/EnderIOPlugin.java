@@ -39,22 +39,26 @@ public class EnderIOPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        AlloySmelterRecipeCategory.register(registry);
-        EnchanterRecipeCategory.register(registry);
-        SagMillRecipeCategory.register(registry);
-        SliceAndSpliceRecipeCategory.register(registry);
-        SoulBinderRecipeCategory.register(registry);
-        VatRecipeCategory.register(registry);
+        try {
+            AlloySmelterRecipeCategory.register(registry);
+            EnchanterRecipeCategory.register(registry);
+            SagMillRecipeCategory.register(registry);
+            SliceAndSpliceRecipeCategory.register(registry);
+            SoulBinderRecipeCategory.register(registry);
+            VatRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        AlloySmelterRecipeCategory.initialize(registry);
-        EnchanterRecipeCategory.initialize(registry);
-        SagMillRecipeCategory.initialize(registry);
-        SliceAndSpliceRecipeCategory.initialize(registry);
-        SoulBinderRecipeCategory.initialize(registry);
-        VatRecipeCategory.initialize(registry);
+        try {
+            AlloySmelterRecipeCategory.initialize(registry);
+            EnchanterRecipeCategory.initialize(registry);
+            SagMillRecipeCategory.initialize(registry);
+            SliceAndSpliceRecipeCategory.initialize(registry);
+            SoulBinderRecipeCategory.initialize(registry);
+            VatRecipeCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 
 }

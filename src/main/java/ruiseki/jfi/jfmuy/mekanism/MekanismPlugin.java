@@ -142,130 +142,139 @@ public class MekanismPlugin implements IModPlugin {
             } catch (Throwable ignore) {}
         }
 
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.EnergyCube), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock2), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock3), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.BasicBlock), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.BasicBlock2), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.GasTank), NBT_INTERPRETER);
-        registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.CardboardBox), NBT_INTERPRETER);
+        try {
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.EnergyCube), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock2), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.MachineBlock3), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.BasicBlock), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.BasicBlock2), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.GasTank), NBT_INTERPRETER);
+            registry.registerSubtypeInterpreter(Item.getItemFromBlock(MekanismBlocks.CardboardBox), NBT_INTERPRETER);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void registerIngredients(IModIngredientRegistration registry) {
-        List<GasStack> list = GasRegistry.getRegisteredGasses()
-            .stream()
-            .filter(Gas::isVisible)
-            .map(g -> new GasStack(g, FluidHelpers.BUCKET_VOLUME))
-            .collect(Collectors.toList());
-        registry.register(MekanismPlugin.TYPE_GAS, list, new GasStackHelper(), new GasStackRenderer());
+        try {
+            List<GasStack> list = GasRegistry.getRegisteredGasses()
+                .stream()
+                .filter(Gas::isVisible)
+                .map(g -> new GasStack(g, FluidHelpers.BUCKET_VOLUME))
+                .collect(Collectors.toList());
+            registry.register(MekanismPlugin.TYPE_GAS, list, new GasStackHelper(), new GasStackRenderer());
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        IGuiHelper guiHelper = registry.getJFMUYHelpers()
-            .getGuiHelper();
+        try {
+            IGuiHelper guiHelper = registry.getJFMUYHelpers()
+                .getGuiHelper();
 
-        addRecipeCategory(
-            registry,
-            MachineType.CHEMICAL_CRYSTALLIZER,
-            new ChemicalCrystallizerRecipeCategory(guiHelper));
-        addRecipeCategory(
-            registry,
-            MachineType.CHEMICAL_DISSOLUTION_CHAMBER,
-            new ChemicalDissolutionChamberRecipeCategory(guiHelper));
-        addRecipeCategory(registry, MachineType.CHEMICAL_INFUSER, new ChemicalInfuserRecipeCategory(guiHelper));
-        addRecipeCategory(registry, MachineType.CHEMICAL_OXIDIZER, new ChemicalOxidizerRecipeCategory(guiHelper));
-        addRecipeCategory(registry, MachineType.CHEMICAL_WASHER, new ChemicalWasherRecipeCategory(guiHelper));
-        addRecipeCategory(
-            registry,
-            MachineType.ELECTROLYTIC_SEPARATOR,
-            new ElectrolyticSeparatorRecipeCategory(guiHelper));
-        addRecipeCategory(registry, MachineType.METALLURGIC_INFUSER, new MetallurgicInfuserRecipeCategory(guiHelper));
-        addRecipeCategory(registry, MachineType.PRESSURIZED_REACTION_CHAMBER, new PRCRecipeCategory(guiHelper));
+            addRecipeCategory(
+                registry,
+                MachineType.CHEMICAL_CRYSTALLIZER,
+                new ChemicalCrystallizerRecipeCategory(guiHelper));
+            addRecipeCategory(
+                registry,
+                MachineType.CHEMICAL_DISSOLUTION_CHAMBER,
+                new ChemicalDissolutionChamberRecipeCategory(guiHelper));
+            addRecipeCategory(registry, MachineType.CHEMICAL_INFUSER, new ChemicalInfuserRecipeCategory(guiHelper));
+            addRecipeCategory(registry, MachineType.CHEMICAL_OXIDIZER, new ChemicalOxidizerRecipeCategory(guiHelper));
+            addRecipeCategory(registry, MachineType.CHEMICAL_WASHER, new ChemicalWasherRecipeCategory(guiHelper));
+            addRecipeCategory(
+                registry,
+                MachineType.ELECTROLYTIC_SEPARATOR,
+                new ElectrolyticSeparatorRecipeCategory(guiHelper));
+            addRecipeCategory(
+                registry,
+                MachineType.METALLURGIC_INFUSER,
+                new MetallurgicInfuserRecipeCategory(guiHelper));
+            addRecipeCategory(registry, MachineType.PRESSURIZED_REACTION_CHAMBER, new PRCRecipeCategory(guiHelper));
 
-        addRecipeCategory(
-            registry,
-            MachineType.ROTARY_CONDENSENTRATOR,
-            new RotaryCondensentratorRecipeCategory(guiHelper, true));
-        addRecipeCategory(
-            registry,
-            MachineType.ROTARY_CONDENSENTRATOR,
-            new RotaryCondensentratorRecipeCategory(guiHelper, false));
+            addRecipeCategory(
+                registry,
+                MachineType.ROTARY_CONDENSENTRATOR,
+                new RotaryCondensentratorRecipeCategory(guiHelper, true));
+            addRecipeCategory(
+                registry,
+                MachineType.ROTARY_CONDENSENTRATOR,
+                new RotaryCondensentratorRecipeCategory(guiHelper, false));
 
-        addRecipeCategory(registry, MachineType.SOLAR_NEUTRON_ACTIVATOR, new SolarNeutronRecipeCategory(guiHelper));
+            addRecipeCategory(registry, MachineType.SOLAR_NEUTRON_ACTIVATOR, new SolarNeutronRecipeCategory(guiHelper));
 
-        addRecipeCategory(
-            registry,
-            MachineType.COMBINER,
-            new AdvancedMachineRecipeCategory(
-                guiHelper,
-                Recipe.COMBINER.getRecipeName(),
-                "tile.MachineBlock.Combiner.name",
-                ProgressBar.STONE));
+            addRecipeCategory(
+                registry,
+                MachineType.COMBINER,
+                new AdvancedMachineRecipeCategory(
+                    guiHelper,
+                    Recipe.COMBINER.getRecipeName(),
+                    "tile.MachineBlock.Combiner.name",
+                    ProgressBar.STONE));
 
-        addRecipeCategory(
-            registry,
-            MachineType.PURIFICATION_CHAMBER,
-            new AdvancedMachineRecipeCategory(
-                guiHelper,
-                Recipe.PURIFICATION_CHAMBER.getRecipeName(),
-                "tile.MachineBlock.PurificationChamber.name",
-                ProgressBar.RED));
-        addRecipeCategory(
-            registry,
-            MachineType.OSMIUM_COMPRESSOR,
-            new AdvancedMachineRecipeCategory(
-                guiHelper,
-                Recipe.OSMIUM_COMPRESSOR.getRecipeName(),
-                "tile.MachineBlock.OsmiumCompressor.name",
-                ProgressBar.RED));
-        addRecipeCategory(
-            registry,
-            MachineType.CHEMICAL_INJECTION_CHAMBER,
-            new AdvancedMachineRecipeCategory(
-                guiHelper,
-                Recipe.CHEMICAL_INJECTION_CHAMBER.getRecipeName(),
-                "tile.MachineBlock2.ChemicalInjectionChamber.name",
-                ProgressBar.YELLOW));
+            addRecipeCategory(
+                registry,
+                MachineType.PURIFICATION_CHAMBER,
+                new AdvancedMachineRecipeCategory(
+                    guiHelper,
+                    Recipe.PURIFICATION_CHAMBER.getRecipeName(),
+                    "tile.MachineBlock.PurificationChamber.name",
+                    ProgressBar.RED));
+            addRecipeCategory(
+                registry,
+                MachineType.OSMIUM_COMPRESSOR,
+                new AdvancedMachineRecipeCategory(
+                    guiHelper,
+                    Recipe.OSMIUM_COMPRESSOR.getRecipeName(),
+                    "tile.MachineBlock.OsmiumCompressor.name",
+                    ProgressBar.RED));
+            addRecipeCategory(
+                registry,
+                MachineType.CHEMICAL_INJECTION_CHAMBER,
+                new AdvancedMachineRecipeCategory(
+                    guiHelper,
+                    Recipe.CHEMICAL_INJECTION_CHAMBER.getRecipeName(),
+                    "tile.MachineBlock2.ChemicalInjectionChamber.name",
+                    ProgressBar.YELLOW));
 
-        addRecipeCategory(
-            registry,
-            MachineType.PRECISION_SAWMILL,
-            new ChanceMachineRecipeCategory(
-                guiHelper,
-                Recipe.PRECISION_SAWMILL.getRecipeName(),
-                "tile.MachineBlock2.PrecisionSawmill.name",
-                ProgressBar.PURPLE));
+            addRecipeCategory(
+                registry,
+                MachineType.PRECISION_SAWMILL,
+                new ChanceMachineRecipeCategory(
+                    guiHelper,
+                    Recipe.PRECISION_SAWMILL.getRecipeName(),
+                    "tile.MachineBlock2.PrecisionSawmill.name",
+                    ProgressBar.PURPLE));
 
-        addRecipeCategory(
-            registry,
-            MachineType.ENRICHMENT_CHAMBER,
-            new MachineRecipeCategory(
-                guiHelper,
-                Recipe.ENRICHMENT_CHAMBER.getRecipeName(),
-                "tile.MachineBlock.EnrichmentChamber.name",
-                ProgressBar.BLUE));
-        addRecipeCategory(
-            registry,
-            MachineType.CRUSHER,
-            new MachineRecipeCategory(
-                guiHelper,
-                Recipe.CRUSHER.getRecipeName(),
-                "tile.MachineBlock.Crusher.name",
-                ProgressBar.CRUSH));
-        addRecipeCategory(
-            registry,
-            MachineType.ENERGIZED_SMELTER,
-            new MachineRecipeCategory(
-                guiHelper,
-                Recipe.ENERGIZED_SMELTER.getRecipeName(),
-                "tile.MachineBlock.EnergizedSmelter.name",
-                ProgressBar.BLUE));
+            addRecipeCategory(
+                registry,
+                MachineType.ENRICHMENT_CHAMBER,
+                new MachineRecipeCategory(
+                    guiHelper,
+                    Recipe.ENRICHMENT_CHAMBER.getRecipeName(),
+                    "tile.MachineBlock.EnrichmentChamber.name",
+                    ProgressBar.BLUE));
+            addRecipeCategory(
+                registry,
+                MachineType.CRUSHER,
+                new MachineRecipeCategory(
+                    guiHelper,
+                    Recipe.CRUSHER.getRecipeName(),
+                    "tile.MachineBlock.Crusher.name",
+                    ProgressBar.CRUSH));
+            addRecipeCategory(
+                registry,
+                MachineType.ENERGIZED_SMELTER,
+                new MachineRecipeCategory(
+                    guiHelper,
+                    Recipe.ENERGIZED_SMELTER.getRecipeName(),
+                    "tile.MachineBlock.EnergizedSmelter.name",
+                    ProgressBar.BLUE));
 
-        // There is no config option to disable the thermal evaporation plant
-        registry.addRecipeCategories(new ThermalEvaporationRecipeCategory(guiHelper));
+            // There is no config option to disable the thermal evaporation plant
+            registry.addRecipeCategories(new ThermalEvaporationRecipeCategory(guiHelper));
+        } catch (Throwable ignore) {}
     }
 
     private void addRecipeCategory(IRecipeCategoryRegistration registry, MachineType type,
@@ -277,47 +286,55 @@ public class MekanismPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
+        try {
 
-        registry.addAdvancedGuiHandlers(new GuiElementHandler());
+            registry.addAdvancedGuiHandlers(new GuiElementHandler());
 
-        // Blacklist
-        IIngredientBlacklist ingredientBlacklist = registry.getJFMUYHelpers()
-            .getIngredientBlacklist();
-        ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismItems.ItemProxy));
-        ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismBlocks.BoundingBlock));
+            // Blacklist
+            IIngredientBlacklist ingredientBlacklist = registry.getJFMUYHelpers()
+                .getIngredientBlacklist();
+            ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismItems.ItemProxy));
+            ingredientBlacklist.addIngredientToBlacklist(new ItemStack(MekanismBlocks.BoundingBlock));
 
-        registry.handleRecipes(
-            ShapedMekanismRecipe.class,
-            ShapedMekanismRecipeWrapper::new,
-            VanillaRecipeCategoryUid.CRAFTING);
+            registry.handleRecipes(
+                ShapedMekanismRecipe.class,
+                ShapedMekanismRecipeWrapper::new,
+                VanillaRecipeCategoryUid.CRAFTING);
 
-        registry.handleRecipes(
-            ShapelessMekanismRecipe.class,
-            ShapelessMekanismRecipeWrapper::new,
-            VanillaRecipeCategoryUid.CRAFTING);
+            registry.handleRecipes(
+                ShapelessMekanismRecipe.class,
+                ShapelessMekanismRecipeWrapper::new,
+                VanillaRecipeCategoryUid.CRAFTING);
 
-        // Register the recipes and their catalysts if enabled
-        RecipeRegistryHelper.registerEnrichmentChamber(registry);
-        RecipeRegistryHelper.registerCrusher(registry);
-        RecipeRegistryHelper.registerCombiner(registry);
-        RecipeRegistryHelper.registerPurification(registry);
-        RecipeRegistryHelper.registerCompressor(registry);
-        RecipeRegistryHelper.registerInjection(registry);
-        RecipeRegistryHelper.registerSawmill(registry);
-        RecipeRegistryHelper.registerMetallurgicInfuser(registry);
-        RecipeRegistryHelper.registerCrystallizer(registry);
-        RecipeRegistryHelper.registerDissolution(registry);
-        RecipeRegistryHelper.registerChemicalInfuser(registry);
-        RecipeRegistryHelper.registerOxidizer(registry);
-        RecipeRegistryHelper.registerWasher(registry);
-        RecipeRegistryHelper.registerNeutronActivator(registry);
-        RecipeRegistryHelper.registerSeparator(registry);
-        RecipeRegistryHelper.registerEvaporationPlant(registry);
-        RecipeRegistryHelper.registerReactionChamber(registry);
-        RecipeRegistryHelper.registerCondensentrator(registry);
-        RecipeRegistryHelper.registerSmelter(registry);
-        RecipeRegistryHelper.registerFormulaicAssemblicator(registry);
-        registry.getRecipeTransferRegistry()
-            .addRecipeTransferHandler(ContainerRobitInventory.class, VanillaRecipeCategoryUid.CRAFTING, 1, 9, 10, 36);
+            // Register the recipes and their catalysts if enabled
+            RecipeRegistryHelper.registerEnrichmentChamber(registry);
+            RecipeRegistryHelper.registerCrusher(registry);
+            RecipeRegistryHelper.registerCombiner(registry);
+            RecipeRegistryHelper.registerPurification(registry);
+            RecipeRegistryHelper.registerCompressor(registry);
+            RecipeRegistryHelper.registerInjection(registry);
+            RecipeRegistryHelper.registerSawmill(registry);
+            RecipeRegistryHelper.registerMetallurgicInfuser(registry);
+            RecipeRegistryHelper.registerCrystallizer(registry);
+            RecipeRegistryHelper.registerDissolution(registry);
+            RecipeRegistryHelper.registerChemicalInfuser(registry);
+            RecipeRegistryHelper.registerOxidizer(registry);
+            RecipeRegistryHelper.registerWasher(registry);
+            RecipeRegistryHelper.registerNeutronActivator(registry);
+            RecipeRegistryHelper.registerSeparator(registry);
+            RecipeRegistryHelper.registerEvaporationPlant(registry);
+            RecipeRegistryHelper.registerReactionChamber(registry);
+            RecipeRegistryHelper.registerCondensentrator(registry);
+            RecipeRegistryHelper.registerSmelter(registry);
+            RecipeRegistryHelper.registerFormulaicAssemblicator(registry);
+            registry.getRecipeTransferRegistry()
+                .addRecipeTransferHandler(
+                    ContainerRobitInventory.class,
+                    VanillaRecipeCategoryUid.CRAFTING,
+                    1,
+                    9,
+                    10,
+                    36);
+        } catch (Throwable ignore) {}
     }
 }

@@ -73,46 +73,50 @@ public class IC2Plugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         if (Loader.isModLoaded("jfic2c")) return;
-        AdvRecipeCategory.register(registry);
-        AdvShapelessRecipeCategory.register(registry);
-        MaceratorCategory.register(registry);
-        ExtractorCategory.register(registry);
-        CompressorCategory.register(registry);
-        ScrapboxRecipeCategory.register(registry);
-        MetalFormerCuttingCategory.register(registry);
-        MetalFormerExtrudingCategory.register(registry);
-        MetalFormerRollingCategory.register(registry);
-        CentrifugeCategory.register(registry);
-        BlockCutterCategory.register(registry);
-        OreWashingCategory.register(registry);
-        SolidCannerRecipeCategory.register(registry);
-        BlastFurnaceCategory.register(registry);
-        LatheRecipeCategory.register(registry);
-        FluidCannerRecipeCategory.register(registry);
+        try {
+            AdvRecipeCategory.register(registry);
+            AdvShapelessRecipeCategory.register(registry);
+            MaceratorCategory.register(registry);
+            ExtractorCategory.register(registry);
+            CompressorCategory.register(registry);
+            ScrapboxRecipeCategory.register(registry);
+            MetalFormerCuttingCategory.register(registry);
+            MetalFormerExtrudingCategory.register(registry);
+            MetalFormerRollingCategory.register(registry);
+            CentrifugeCategory.register(registry);
+            BlockCutterCategory.register(registry);
+            OreWashingCategory.register(registry);
+            SolidCannerRecipeCategory.register(registry);
+            BlastFurnaceCategory.register(registry);
+            LatheRecipeCategory.register(registry);
+            FluidCannerRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
         if (Loader.isModLoaded("jfic2c")) return;
-        AdvRecipeCategory.initialize(registry);
-        AdvShapelessRecipeCategory.initialize(registry);
-        MaceratorCategory.initialize(registry);
-        ExtractorCategory.initialize(registry);
-        CompressorCategory.initialize(registry);
-        ScrapboxRecipeCategory.initialize(registry);
-        MetalFormerCuttingCategory.initialize(registry);
-        MetalFormerExtrudingCategory.initialize(registry);
-        MetalFormerRollingCategory.initialize(registry);
-        CentrifugeCategory.initialize(registry);
-        BlockCutterCategory.initialize(registry);
-        OreWashingCategory.initialize(registry);
-        SolidCannerRecipeCategory.initialize(registry);
-        BlastFurnaceCategory.initialize(registry);
-        LatheRecipeCategory.initialize(registry);
-        FluidCannerRecipeCategory.initialize(registry);
+        try {
+            AdvRecipeCategory.initialize(registry);
+            AdvShapelessRecipeCategory.initialize(registry);
+            MaceratorCategory.initialize(registry);
+            ExtractorCategory.initialize(registry);
+            CompressorCategory.initialize(registry);
+            ScrapboxRecipeCategory.initialize(registry);
+            MetalFormerCuttingCategory.initialize(registry);
+            MetalFormerExtrudingCategory.initialize(registry);
+            MetalFormerRollingCategory.initialize(registry);
+            CentrifugeCategory.initialize(registry);
+            BlockCutterCategory.initialize(registry);
+            OreWashingCategory.initialize(registry);
+            SolidCannerRecipeCategory.initialize(registry);
+            BlastFurnaceCategory.initialize(registry);
+            LatheRecipeCategory.initialize(registry);
+            FluidCannerRecipeCategory.initialize(registry);
 
-        registry.addRecipeCatalyst(Ic2Items.ironFurnace, VanillaRecipeCategoryUid.SMELTING);
-        registry.addRecipeCatalyst(Ic2Items.electroFurnace, VanillaRecipeCategoryUid.SMELTING);
-        registry.addRecipeCatalyst(Ic2Items.inductionFurnace, VanillaRecipeCategoryUid.SMELTING);
+            registry.addRecipeCatalyst(Ic2Items.ironFurnace, VanillaRecipeCategoryUid.SMELTING);
+            registry.addRecipeCatalyst(Ic2Items.electroFurnace, VanillaRecipeCategoryUid.SMELTING);
+            registry.addRecipeCatalyst(Ic2Items.inductionFurnace, VanillaRecipeCategoryUid.SMELTING);
+        } catch (Throwable ignore) {}
     }
 }

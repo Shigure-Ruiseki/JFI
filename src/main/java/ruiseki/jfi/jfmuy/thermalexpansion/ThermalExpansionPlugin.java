@@ -70,49 +70,53 @@ public class ThermalExpansionPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        CompressionFuelCategory.register(registry);
-        EnervationFuelCategory.register(registry);
-        MagmaticFuelCategory.register(registry);
-        ReactantFuelCategory.register(registry);
-        SteamFuelCategory.register(registry);
+        try {
+            CompressionFuelCategory.register(registry);
+            EnervationFuelCategory.register(registry);
+            MagmaticFuelCategory.register(registry);
+            ReactantFuelCategory.register(registry);
+            SteamFuelCategory.register(registry);
 
-        CraftingMachineRecipeCategory.register(registry);
-        CraftingSecureRecipeCategory.register(registry);
-        CraftingUpgradeRecipeCategory.register(registry);
+            CraftingMachineRecipeCategory.register(registry);
+            CraftingSecureRecipeCategory.register(registry);
+            CraftingUpgradeRecipeCategory.register(registry);
 
-        ChargerRecipeCategory.register(registry);
-        CrucibleRecipeCategory.register(registry);
-        FurnaceRecipeCategory.register(registry);
-        InsolatorRecipeCategory.register(registry);
-        PulverizerRecipeCategory.register(registry);
-        SawmillRecipeCategory.register(registry);
-        SmelterRecipeCategory.register(registry);
-        TransposerRecipeCategory.register(registry);
+            ChargerRecipeCategory.register(registry);
+            CrucibleRecipeCategory.register(registry);
+            FurnaceRecipeCategory.register(registry);
+            InsolatorRecipeCategory.register(registry);
+            PulverizerRecipeCategory.register(registry);
+            SawmillRecipeCategory.register(registry);
+            SmelterRecipeCategory.register(registry);
+            TransposerRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        CompressionFuelCategory.initialize(registry);
-        EnervationFuelCategory.initialize(registry);
-        MagmaticFuelCategory.initialize(registry);
-        ReactantFuelCategory.initialize(registry);
-        SteamFuelCategory.initialize(registry);
+        try {
+            CompressionFuelCategory.initialize(registry);
+            EnervationFuelCategory.initialize(registry);
+            MagmaticFuelCategory.initialize(registry);
+            ReactantFuelCategory.initialize(registry);
+            SteamFuelCategory.initialize(registry);
 
-        CraftingMachineRecipeCategory.initialize(registry);
-        CraftingSecureRecipeCategory.initialize(registry);
-        CraftingUpgradeRecipeCategory.initialize(registry);
+            CraftingMachineRecipeCategory.initialize(registry);
+            CraftingSecureRecipeCategory.initialize(registry);
+            CraftingUpgradeRecipeCategory.initialize(registry);
 
-        ChargerRecipeCategory.initialize(registry);
-        CrucibleRecipeCategory.initialize(registry);
-        FurnaceRecipeCategory.initialize(registry);
-        InsolatorRecipeCategory.initialize(registry);
-        PulverizerRecipeCategory.initialize(registry);
-        SawmillRecipeCategory.initialize(registry);
-        SmelterRecipeCategory.initialize(registry);
-        TransposerRecipeCategory.initialize(registry);
+            ChargerRecipeCategory.initialize(registry);
+            CrucibleRecipeCategory.initialize(registry);
+            FurnaceRecipeCategory.initialize(registry);
+            InsolatorRecipeCategory.initialize(registry);
+            PulverizerRecipeCategory.initialize(registry);
+            SawmillRecipeCategory.initialize(registry);
+            SmelterRecipeCategory.initialize(registry);
+            TransposerRecipeCategory.initialize(registry);
 
-        registry.getRecipeTransferRegistry()
-            .addRecipeTransferHandler(new WorkbenchRecipeTransferHandler(), VanillaRecipeCategoryUid.CRAFTING);
+            registry.getRecipeTransferRegistry()
+                .addRecipeTransferHandler(new WorkbenchRecipeTransferHandler(), VanillaRecipeCategoryUid.CRAFTING);
+        } catch (Throwable ignore) {}
     }
 
     public static void drawFluid(int x, int y, FluidStack fluid, int width, int height) {

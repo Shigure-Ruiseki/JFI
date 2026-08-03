@@ -52,31 +52,35 @@ public class IEPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        ArcFurnaceRecipeCategory.register(registry);
-        BottlingRecipeCategory.register(registry);
-        BlueprintRecipeCategory.register(registry);
-        BlastFurnaceRecipeCategory.register(registry);
-        CokeOvenRecipeCategory.register(registry);
-        CrusherRecipeCategory.register(registry);
-        FermenterRecipeCategory.register(registry);
-        MetalPressRecipeCategory.register(registry);
-        RefineryRecipeCategory.register(registry);
-        ShaderBagRecipeCategory.register(registry);
-        SqueezerRecipeCategory.register(registry);
+        try {
+            ArcFurnaceRecipeCategory.register(registry);
+            BottlingRecipeCategory.register(registry);
+            BlueprintRecipeCategory.register(registry);
+            BlastFurnaceRecipeCategory.register(registry);
+            CokeOvenRecipeCategory.register(registry);
+            CrusherRecipeCategory.register(registry);
+            FermenterRecipeCategory.register(registry);
+            MetalPressRecipeCategory.register(registry);
+            RefineryRecipeCategory.register(registry);
+            ShaderBagRecipeCategory.register(registry);
+            SqueezerRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        CokeOvenRecipeCategory.initialize(registry);
-        BottlingRecipeCategory.initialize(registry);
-        BlueprintRecipeCategory.initialize(registry);
-        BlastFurnaceRecipeCategory.initialize(registry);
-        ArcFurnaceRecipeCategory.initialize(registry);
-        CrusherRecipeCategory.initialize(registry);
-        FermenterRecipeCategory.initialize(registry);
-        MetalPressRecipeCategory.initialize(registry);
-        RefineryRecipeCategory.initialize(registry);
-        ShaderBagRecipeCategory.initialize(registry);
-        SqueezerRecipeCategory.initialize(registry);
+        try {
+            CokeOvenRecipeCategory.initialize(registry);
+            BottlingRecipeCategory.initialize(registry);
+            BlueprintRecipeCategory.initialize(registry);
+            BlastFurnaceRecipeCategory.initialize(registry);
+            ArcFurnaceRecipeCategory.initialize(registry);
+            CrusherRecipeCategory.initialize(registry);
+            FermenterRecipeCategory.initialize(registry);
+            MetalPressRecipeCategory.initialize(registry);
+            RefineryRecipeCategory.initialize(registry);
+            ShaderBagRecipeCategory.initialize(registry);
+            SqueezerRecipeCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }
