@@ -29,17 +29,21 @@ public class BigReactorsPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        FuelCategory.register(registry);
-        ReactorCategory.register(registry);
-        TurbineCategory.register(registry);
-        CyaniteReprocessorCategory.register(registry);
+        try {
+            FuelCategory.register(registry);
+            ReactorCategory.register(registry);
+            TurbineCategory.register(registry);
+            CyaniteReprocessorCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        FuelCategory.initialize(registry);
-        ReactorCategory.initialize(registry);
-        TurbineCategory.initialize(registry);
-        CyaniteReprocessorCategory.initialize(registry);
+        try {
+            FuelCategory.initialize(registry);
+            ReactorCategory.initialize(registry);
+            TurbineCategory.initialize(registry);
+            CyaniteReprocessorCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }

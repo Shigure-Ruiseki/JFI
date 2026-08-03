@@ -51,25 +51,29 @@ public class HarvestCraftPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        ApiaryCategory.register(registry);
-        ChurnCategory.register(registry);
-        OvenCategory.register(registry);
-        PresserCategory.register(registry);
-        QuernCategory.register(registry);
-        AnimalTrapCategory.register(registry);
-        FishTrapCategory.register(registry);
-        GardenCategory.register(registry);
+        try {
+            ApiaryCategory.register(registry);
+            ChurnCategory.register(registry);
+            OvenCategory.register(registry);
+            PresserCategory.register(registry);
+            QuernCategory.register(registry);
+            AnimalTrapCategory.register(registry);
+            FishTrapCategory.register(registry);
+            GardenCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        ApiaryCategory.initialize(registry);
-        ChurnCategory.initialize(registry);
-        OvenCategory.initialize(registry);
-        PresserCategory.initialize(registry);
-        QuernCategory.initialize(registry);
-        AnimalTrapCategory.initialize(registry);
-        FishTrapCategory.initialize(registry);
-        GardenCategory.initialize(registry);
+        try {
+            ApiaryCategory.initialize(registry);
+            ChurnCategory.initialize(registry);
+            OvenCategory.initialize(registry);
+            PresserCategory.initialize(registry);
+            QuernCategory.initialize(registry);
+            AnimalTrapCategory.initialize(registry);
+            FishTrapCategory.initialize(registry);
+            GardenCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }

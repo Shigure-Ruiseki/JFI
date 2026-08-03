@@ -51,29 +51,33 @@ public class MFRPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        BioReactorCategory.register(registry);
-        ComposterCategory.register(registry);
-        GrinderCategory.register(registry);
-        HarvesterCategory.register(registry);
-        LaserDrillCategory.register(registry);
-        LavaFabricatorCategory.register(registry);
-        MeatPackerCategory.register(registry);
-        SewerCategory.register(registry);
-        SlaughterhouseCategory.register(registry);
-        SludgeBoilerCategory.register(registry);
+        try {
+            BioReactorCategory.register(registry);
+            ComposterCategory.register(registry);
+            GrinderCategory.register(registry);
+            HarvesterCategory.register(registry);
+            LaserDrillCategory.register(registry);
+            LavaFabricatorCategory.register(registry);
+            MeatPackerCategory.register(registry);
+            SewerCategory.register(registry);
+            SlaughterhouseCategory.register(registry);
+            SludgeBoilerCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        BioReactorCategory.initialize(registry);
-        ComposterCategory.initialize(registry);
-        GrinderCategory.initialize(registry);
-        HarvesterCategory.initialize(registry);
-        LaserDrillCategory.initialize(registry);
-        LavaFabricatorCategory.initialize(registry);
-        MeatPackerCategory.initialize(registry);
-        SewerCategory.initialize(registry);
-        SlaughterhouseCategory.initialize(registry);
-        SludgeBoilerCategory.initialize(registry);
+        try {
+            BioReactorCategory.initialize(registry);
+            ComposterCategory.initialize(registry);
+            GrinderCategory.initialize(registry);
+            HarvesterCategory.initialize(registry);
+            LaserDrillCategory.initialize(registry);
+            LavaFabricatorCategory.initialize(registry);
+            MeatPackerCategory.initialize(registry);
+            SewerCategory.initialize(registry);
+            SlaughterhouseCategory.initialize(registry);
+            SludgeBoilerCategory.initialize(registry);
+        } catch (Throwable ignore) {}
     }
 }

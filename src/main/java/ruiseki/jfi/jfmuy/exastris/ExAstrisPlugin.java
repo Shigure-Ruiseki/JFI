@@ -14,7 +14,9 @@ public class ExAstrisPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        registry.addRecipeCatalyst(new ItemStack(ExAstrisBlock.HammerAutomatic), HammerRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ExAstrisBlock.SieveAutomatic), SieveRecipeCategory.UID);
+        try {
+            registry.addRecipeCatalyst(new ItemStack(ExAstrisBlock.HammerAutomatic), HammerRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ExAstrisBlock.SieveAutomatic), SieveRecipeCategory.UID);
+        } catch (Throwable ignore) {}
     }
 }

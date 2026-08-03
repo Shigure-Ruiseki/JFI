@@ -50,45 +50,52 @@ public class TConstructPlugin implements IModPlugin {
             } catch (Throwable ignore) {}
         }
 
-        // tool parts
-        ToolPartSubtypeInterpreter toolPartInterpreter = new ToolPartSubtypeInterpreter();
-        for (Item item : TConstructRegistry.itemDirectory.values()) {
-            if (item instanceof IToolPart) {
-                registry.registerSubtypeInterpreter(item, toolPartInterpreter);
+        try {
+            // tool parts
+            ToolPartSubtypeInterpreter toolPartInterpreter = new ToolPartSubtypeInterpreter();
+            for (Item item : TConstructRegistry.itemDirectory.values()) {
+                if (item instanceof IToolPart) {
+                    registry.registerSubtypeInterpreter(item, toolPartInterpreter);
+                }
             }
-        }
 
-        // tool
-        ToolSubtypeInterpreter toolInterpreter = new ToolSubtypeInterpreter();
-        for (ToolCore tool : TConstructRegistry.tools) {
-            registry.registerSubtypeInterpreter(tool, toolInterpreter);
-        }
+            // tool
+            ToolSubtypeInterpreter toolInterpreter = new ToolSubtypeInterpreter();
+            for (ToolCore tool : TConstructRegistry.tools) {
+                registry.registerSubtypeInterpreter(tool, toolInterpreter);
+            }
 
-        PatternSubtypeInterpreter patternInterpreter = new PatternSubtypeInterpreter();
-        registry.registerSubtypeInterpreter(TinkerTools.woodPattern, patternInterpreter);
-        registry.registerSubtypeInterpreter(TinkerSmeltery.metalPattern, patternInterpreter);
-        registry.registerSubtypeInterpreter(TinkerSmeltery.clayPattern, patternInterpreter);
+            PatternSubtypeInterpreter patternInterpreter = new PatternSubtypeInterpreter();
+            registry.registerSubtypeInterpreter(TinkerTools.woodPattern, patternInterpreter);
+            registry.registerSubtypeInterpreter(TinkerSmeltery.metalPattern, patternInterpreter);
+            registry.registerSubtypeInterpreter(TinkerSmeltery.clayPattern, patternInterpreter);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        AlloyingRecipeCategory.register(registry);
-        CastingRecipeCategory.register(registry);
-        DryingRackRecipeCategory.register(registry);
-        MeltingRecipeCategory.register(registry);
-        ToolMaterialsRecipeCategory.register(registry);
+        try {
+            AlloyingRecipeCategory.register(registry);
+            CastingRecipeCategory.register(registry);
+            DryingRackRecipeCategory.register(registry);
+            MeltingRecipeCategory.register(registry);
+            ToolMaterialsRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        AlloyingRecipeCategory.initialize(registry);
-        CastingRecipeCategory.initialize(registry);
-        DryingRackRecipeCategory.initialize(registry);
-        MeltingRecipeCategory.initialize(registry);
-        ToolMaterialsRecipeCategory.initialize(registry);
+        try {
+            AlloyingRecipeCategory.initialize(registry);
+            CastingRecipeCategory.initialize(registry);
+            DryingRackRecipeCategory.initialize(registry);
+            MeltingRecipeCategory.initialize(registry);
+            ToolMaterialsRecipeCategory.initialize(registry);
 
-        registry.addRecipeCatalyst(new ItemStack(TinkerTools.craftingStationWood), VanillaRecipeCategoryUid.CRAFTING);
-        registry.getRecipeTransferRegistry()
-            .addRecipeTransferHandler(new CraftingStationRecipeTransferInfo());
+            registry
+                .addRecipeCatalyst(new ItemStack(TinkerTools.craftingStationWood), VanillaRecipeCategoryUid.CRAFTING);
+            registry.getRecipeTransferRegistry()
+                .addRecipeTransferHandler(new CraftingStationRecipeTransferInfo());
+        } catch (Throwable ignore) {}
     }
 }

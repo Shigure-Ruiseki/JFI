@@ -25,13 +25,17 @@ public class ThermalDynamicsPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        CoverRecipeCategory.register(registry);
+        try {
+            CoverRecipeCategory.register(registry);
+        } catch (Throwable ignore) {}
     }
 
     @Override
     public void register(IModRegistry registry) {
-        CoverRecipeCategory.initialize(registry);
-        registry.getRecipeTransferRegistry()
-            .copyRecipeTransferHandlers(VanillaRecipeCategoryUid.CRAFTING, RecipeUidsTD.COVERS);
+        try {
+            CoverRecipeCategory.initialize(registry);
+            registry.getRecipeTransferRegistry()
+                .copyRecipeTransferHandlers(VanillaRecipeCategoryUid.CRAFTING, RecipeUidsTD.COVERS);
+        } catch (Throwable ignore) {}
     }
 }
