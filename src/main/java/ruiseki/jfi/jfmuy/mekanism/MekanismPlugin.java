@@ -72,7 +72,7 @@ import ruiseki.jfmuy.api.recipe.IIngredientType;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
 import ruiseki.jfmuy.api.recipe.VanillaRecipeCategoryUid;
 import ruiseki.jfmuy.plugins.nei.RecipeHarvester;
-import ruiseki.okcore.fluid.FluidHelpers;
+import ruiseki.okcore.helper.FluidHelpers;
 
 @JFMUYPlugin(value = "Mekanism")
 public class MekanismPlugin implements IModPlugin {

@@ -19,7 +19,7 @@ import mekanism.api.gas.GasStack;
 import ruiseki.jfmuy.api.gui.IDrawable;
 import ruiseki.jfmuy.api.ingredients.IIngredientRenderer;
 import ruiseki.okcore.client.renderer.GlStateManager;
-import ruiseki.okcore.fluid.FluidHelpers;
+import ruiseki.okcore.helper.FluidHelpers;
 import ruiseki.okcore.helper.LangHelpers;
 
 public class GasStackRenderer implements IIngredientRenderer<GasStack> {

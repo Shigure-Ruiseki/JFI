@@ -6,7 +6,7 @@ import ruiseki.jfi.util.OreDictHelper;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IRecipeWrapper;
-import ruiseki.okcore.fluid.FluidHelpers;
+import ruiseki.okcore.helper.FluidHelpers;
 
 public class ReactorWrapper implements IRecipeWrapper {
 
