@@ -32,7 +32,7 @@ import ruiseki.jfmuy.api.gui.IRecipeLayout;
 import ruiseki.jfmuy.api.ingredients.IIngredients;
 import ruiseki.jfmuy.api.ingredients.VanillaTypes;
 import ruiseki.jfmuy.api.recipe.IRecipeCategoryRegistration;
-import ruiseki.okcore.fluid.FluidHelpers;
+import ruiseki.okcore.helper.FluidHelpers;
 
 public class MagmaticFuelCategory extends BaseFuelCategory<MagmaticFuelWrapper> {
 
