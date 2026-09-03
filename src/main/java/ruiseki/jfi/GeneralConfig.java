@@ -1,7 +1,6 @@
 package ruiseki.jfi;
 
 import ruiseki.okcore.config.ConfigurableProperty;
-import ruiseki.okcore.config.ConfigurableTypeCategory;
 import ruiseki.okcore.config.extendedconfig.DummyConfig;
 import ruiseki.okcore.tracking.Versions;
 
@@ -12,16 +11,14 @@ public class GeneralConfig extends DummyConfig {
      * warn the player accordingly.
      */
     @ConfigurableProperty(
-        category = ConfigurableTypeCategory.CORE,
+        category = "core",
         comment = "Config version for " + Reference.MOD_NAME + ".\nDO NOT EDIT MANUALLY!")
     public static String version = Reference.MOD_VERSION;
 
     /**
      * If the version checker should be enabled.
      */
-    @ConfigurableProperty(
-        category = ConfigurableTypeCategory.CORE,
-        comment = "If the version checker should be enabled.")
+    @ConfigurableProperty(category = "core", comment = "If the version checker should be enabled.")
     public static boolean versionChecker = true;
 
     /**
