@@ -25,7 +25,7 @@ public class GeneralConfig extends DummyConfig {
      * Create a new instance.
      */
     public GeneralConfig() {
-        super(JFI._instance, true, "general", null, GeneralConfig.class);
+        super(JFI._instance, true, "general", null);
     }
 
     @Override
