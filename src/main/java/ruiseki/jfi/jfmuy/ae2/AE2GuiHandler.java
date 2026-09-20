@@ -111,4 +111,9 @@ public class AE2GuiHandler implements IAdvancedGuiHandler<AEBaseGui> {
         }
         return null;
     }
+
+    @Override
+    public @Nullable Object getIngredientUnderMouse(AEBaseGui gui, int mouseX, int mouseY) {
+        return gui.getHoveredStack();
+    }
 }
