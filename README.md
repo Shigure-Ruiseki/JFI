@@ -25,3 +25,4 @@ This addon integrates seamlessly with **JFMUY** to display custom recipes, machi
 *   **Big Reactors** (CyaniteReprocessor, Reactor Fuel, Reactor Interior, Turbine Coil)
 *   **MineFactory Reloaded** (BioReactor, Composter, Grinder, Harvester, Laser Drill, Lava Fabricator, Meat Packer, Sewer, Slaughterhouse, Sludge Boiler)
 *   **Pam's HarvestCraft** (Apiary, Churn, Grinder, Garden, Oven, Presser, Quern, Animal Trap, Fish Trap)
+*   **Applied Energistics 2** (Inscriber, World Crafting, Grinder)
